@@ -1,6 +1,5 @@
-import React from 'react';
 
-const CoordinatorMeetingCreationPage: React.FC = () => {
+function CoordinatorMeetingCreationPage() {
     return (
         <div>
             <h1>Meeting Creation Page</h1>

@@ -1,6 +1,5 @@
-import React from 'react';
 
-const ParticipantWaitingPage: React.FC = () => {
+function ParticipantWaitingPage() {
     return (
         <div>
             <h1>Participant Waiting Page</h1>

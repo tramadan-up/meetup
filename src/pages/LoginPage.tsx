@@ -1,6 +1,5 @@
-import React from 'react';
 
-const LoginPage: React.FC = () => {
+function LoginPage() {
     return (
         <div>
             <h1>Login Page</h1>
