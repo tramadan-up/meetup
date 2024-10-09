@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 function LoginPage() {
     const navigate = useNavigate();
     const handleCoordinatorClick = () => {
-        navigate('/meetup/coordinator');
+        navigate('/coordinator');
     };
     const handleParticipantClick = () => {
-        navigate('/meetup/participant');
+        navigate('/participant');
     };
 
     return (

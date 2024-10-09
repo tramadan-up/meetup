@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage.tsx";
 import CoordinatorMeetingCreationPage from "./pages/CoordinatorMeetingCreationPage.tsx";
 import ParticipantWaitingPage from "./pages/ParticipantWaitingPage.tsx";
@@ -9,9 +9,9 @@ function App() {
     <>
         <Router>
             <Routes>
-                <Route path="/meetup/" element={<LoginPage />} />
-                <Route path="/meetup/coordinator" element={<CoordinatorMeetingCreationPage />} />
-                <Route path="/meetup/participant" element={<ParticipantWaitingPage />} />
+                <Route path="/" element={<LoginPage />} />
+                <Route path="/coordinator" element={<CoordinatorMeetingCreationPage />} />
+                <Route path="/participant" element={<ParticipantWaitingPage />} />
             </Routes>
         </Router>
     </>
