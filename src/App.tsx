@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage.tsx";
 import CoordinatorMeetingCreationPage from "./pages/CoordinatorMeetingCreationPage.tsx";
 import ParticipantWaitingPage from "./pages/ParticipantWaitingPage.tsx";
