@@ -7,19 +7,19 @@ import './App.css'
 function App() {
   return (
     <>
-        <Router basename="/meetup">
+        <Router>
             <nav>
                 <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/coordinator/">About</Link></li>
-                    <li><Link to="/participant">Contact</Link></li>
+                    <li><Link to="/meetup/">Home</Link></li>
+                    <li><Link to="/meetup/coordinator">About</Link></li>
+                    <li><Link to="/meetup/participant">Contact</Link></li>
                 </ul>
             </nav>
 
             <Routes>
-                <Route path="/" element={<LoginPage />} />
-                <Route path="/coordinator" element={<CoordinatorMeetingCreationPage />} />
-                <Route path="/participant" element={<ParticipantWaitingPage />} />
+                <Route path="/meetup/" element={<LoginPage />} />
+                <Route path="/meetup/coordinator" element={<CoordinatorMeetingCreationPage />} />
+                <Route path="/meetup/participant" element={<ParticipantWaitingPage />} />
             </Routes>
         </Router>
     </>
