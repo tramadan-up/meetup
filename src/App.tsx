@@ -7,7 +7,7 @@ import './App.css'
 function App() {
   return (
     <>
-        <Router>
+        <Router basename="/meetup">
             <nav>
                 <ul>
                     <li><Link to="/">Home</Link></li>
