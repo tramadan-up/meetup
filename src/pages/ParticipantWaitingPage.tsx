@@ -6,6 +6,6 @@ function ParticipantWaitingPage() {
             <p>This is the Participant Waiting Page.</p>
         </div>
     );
-};
+}
 
 export default ParticipantWaitingPage;

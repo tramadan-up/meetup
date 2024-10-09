@@ -6,6 +6,6 @@ function CoordinatorMeetingCreationPage() {
             <p>This is the Meeting Creation Page.</p>
         </div>
     );
-};
+}
 
 export default CoordinatorMeetingCreationPage;

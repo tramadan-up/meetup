@@ -1,11 +1,22 @@
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
+    const navigate = useNavigate();
+    const handleCoordinatorClick = () => {
+        navigate('/coordinator');
+    };
+    const handleParticipantClick = () => {
+        navigate('/participant');
+    };
+
     return (
         <div>
-            <h1>Login Page</h1>
-            <p>This is the Login Page.</p>
+            <button onClick={handleCoordinatorClick}>Create a Meeting (Coordinator)</button>
+            <button onClick={handleParticipantClick}>Join a Meeting (Participant)</button>
         </div>
-    );
-};
+
+    )
+        ;
+}
 
 export default LoginPage;
