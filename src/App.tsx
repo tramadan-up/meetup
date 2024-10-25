@@ -1,19 +1,30 @@
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
-import LoginPage from "./pages/LoginPage.tsx";
-import CoordinatorMeetingCreationPage from "./pages/CoordinatorMeetingCreationPage.tsx";
-import ParticipantWaitingPage from "./pages/ParticipantWaitingPage.tsx";
-import './App.css'
+import LoginView from "./pages/LoginView.tsx";
+import CreationView from "./pages/CreationView.tsx";
+import WaitingView from "./pages/WaitingView.tsx";
+import CMainView from "./pages/CMainView.tsx";
+import MainView from "./pages/MainView.tsx";
+import CSlideView from "./pages/CSlideView.tsx";
+import SlideView from "./pages/SlideView.tsx";
+import CReviewView from "./pages/CReviewView.tsx";
+import ReviewView from "./pages/ReviewView.tsx";
 
 function App() {
   return (
     <>
-        <Router>
-            <Routes>
-                <Route path="/" element={<LoginPage />} />
-                <Route path="/coordinator" element={<CoordinatorMeetingCreationPage />} />
-                <Route path="/participant" element={<ParticipantWaitingPage />} />
-            </Routes>
-        </Router>
+      <Router>
+        <Routes>
+          <Route path="/" element={<LoginView />} />
+          <Route path="/coordinator" element={<CreationView />} />
+          <Route path="/coordinator/main" element={<CMainView />} />
+          <Route path="/coordinator/slides" element={<CSlideView />} />
+          <Route path="/coordinator/review" element={<CReviewView />} />
+          <Route path="/participant" element={<WaitingView />} />
+          <Route path="/participant/main" element={<MainView />} />
+          <Route path="/participant/slides" element={<SlideView />} />
+          <Route path="/participant/review" element={<ReviewView />} />
+        </Routes>
+      </Router>
     </>
   )
 }
