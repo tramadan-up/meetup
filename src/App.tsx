@@ -15,10 +15,14 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<LoginView />} />
+
+          /* Coordinator Routing */
           <Route path="/coordinator" element={<CreationView />} />
           <Route path="/coordinator/main" element={<CMainView />} />
           <Route path="/coordinator/slides" element={<CSlideView />} />
           <Route path="/coordinator/review" element={<CReviewView />} />
+
+          /* Participant Routing */
           <Route path="/participant" element={<WaitingView />} />
           <Route path="/participant/main" element={<MainView />} />
           <Route path="/participant/slides" element={<SlideView />} />
