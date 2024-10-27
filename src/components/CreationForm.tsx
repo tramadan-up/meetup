@@ -105,12 +105,19 @@ export default function CreationForm() {
   const saveNewEntry = (newEntry: { name: string; value: number }) => {
     setEntries([...entries, { id: `${entries.length + 1}`, ...newEntry }]);
   };
-
   const removeEntry = (id: string) => {
     if (entries.length > MIN_ENTRIES) {
-      setEntries(entries.filter((entry) => entry.id !== id));
+      const updatedEntries = entries
+        .filter((entry) => entry.id !== id)
+        .map((entry, index) => ({
+          ...entry,
+          id: (index + 1).toString(),
+        }));
+      setEntries(updatedEntries);
     }
   };
+
+
 
   const changeEntryName = (id: string, newName: string) => {
     setEntries(entries.map((entry) => (entry.id === id ? { ...entry, name: newName } : entry)));
@@ -197,14 +204,15 @@ export default function CreationForm() {
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, width: '100%', maxWidth: 400, mt: 2 }}>
                     {entries.map((entry) => (
                       <SortableItem
-                        key={entry.id}
+                        key={`${entry.id}-${entries.length}`}
                         entry={entry}
                         onNameChange={changeEntryName}
                         onValueChange={changeEntryValue}
-                        onRemove={removeEntry}
+                        onRemove={() => removeEntry(entry.id)}
                         isRemoveDisabled={entries.length <= MIN_ENTRIES}
                       />
                     ))}
+
                     {entries.length < MAX_ENTRIES && (
                       <SortableItem
                         entry={{ id: '', name: '', value: 15 }}
