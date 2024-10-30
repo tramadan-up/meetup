@@ -11,6 +11,7 @@ import SortableItem from './SortableItem'
 import TokenForm from './TokenForm'
 import PdfUploader from './PdfUploader'
 import MeetingTime from './MeetingTime'
+import Button from '@mui/material/Button'
 
 
 type Entry = {
@@ -25,6 +26,7 @@ const ENTRIES_STORAGE_KEY = 'entries';
 const MEETING_NAME_STORAGE_KEY = 'meetingName';
 const SPEAKING_TOKENS_KEY = 'speakingTokens';
 const TIMER_TOKENS_KEY = 'timerTokens';
+const SHOW_VALUES_KEY = 'showValues';
 
 export default function CreationForm() {
   // Stored Values
@@ -37,6 +39,11 @@ export default function CreationForm() {
   const [timerTokens, setTimerTokens] = useState<number>(
     parseInt(sessionStorage.getItem(TIMER_TOKENS_KEY) || '3', 10)
   );
+  const [showValues, setShowValues] = useState(() => {
+    // Initialize showValues from sessionStorage if it exists
+    const storedShowValues = sessionStorage.getItem(SHOW_VALUES_KEY);
+    return storedShowValues ? JSON.parse(storedShowValues) : true;
+  });
 
 
   // Navigation
@@ -73,6 +80,10 @@ export default function CreationForm() {
     }
   }, []);
 
+  useEffect(() => {
+    sessionStorage.setItem(SHOW_VALUES_KEY, JSON.stringify(showValues));
+  }, [showValues]);
+
   // Save meeting Name to sessionStorage
   useEffect(() => {
     sessionStorage.setItem(MEETING_NAME_STORAGE_KEY, meetingName);
@@ -88,9 +99,9 @@ export default function CreationForm() {
   // Provide default Entries
   const setDefaultEntries = () => {
     const defaultEntries: Entry[] = [
-      { id: '1', name: 'Einleitung', value: 15 },
-      { id: '2', name: 'Präsentation 1', value: 15 },
-      { id: '3', name: 'Präsentation 2', value: 15 },
+      { id: '1', name: 'Organisation', value: 15 },
+      { id: '2', name: 'Agenda 1', value: 15 },
+      { id: '3', name: 'Präsentation', value: 15 },
       { id: '4', name: 'Diskussion', value: 15 },
     ];
     setEntries(defaultEntries);
@@ -165,9 +176,12 @@ export default function CreationForm() {
       setEntries(updatedEntries);
     }
   };
+  const toggleShowValues = () => {
+    setShowValues((prev: boolean) => !prev);
+  };
 
   return (
-    <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 2, height: '85%', maxWidth: '50vw', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 2, height: '95%', maxWidth: '50vw', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '5vh' }}>
       <Stack direction="column" spacing={5}>
         <Grid>
           <Typography>Willkommen, {name}!</Typography>
@@ -183,12 +197,13 @@ export default function CreationForm() {
             sx={{ maxWidth: 400 }}
           />
         </Grid>
-        <Grid spacing={4} height="60%" width="100%">
+        <Grid height="60%" width="100%" minWidth="30vw">
           <Stack direction="row" spacing={4}>
             <Box
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
+                alignItems: 'center',
                 gap: 2,
                 margin: '0 auto',
                 padding: 2,
@@ -196,8 +211,10 @@ export default function CreationForm() {
                 borderRadius: 1,
                 boxShadow: 1,
                 minHeight: '400px',
+                minWidth: '25vw'
               }}
             >
+              <MeetingTime entries={entries} onAutoClick={onAutoClick} showValues={showValues} />
               <Typography>Einteilung des Meetings:</Typography>
               <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
                 <SortableContext items={entries} strategy={verticalListSortingStrategy}>
@@ -205,7 +222,7 @@ export default function CreationForm() {
                     {entries.map((entry) => (
                       <SortableItem
                         key={`${entry.id}-${entries.length}`}
-                        entry={entry}
+                        entry={showValues ? entry : { id: entry.id, name: entry.name }}
                         onNameChange={changeEntryName}
                         onValueChange={changeEntryValue}
                         onRemove={() => removeEntry(entry.id)}
@@ -223,7 +240,9 @@ export default function CreationForm() {
                   </Box>
                 </SortableContext>
               </DndContext>
-              <MeetingTime entries={entries} onAutoClick={onAutoClick} />
+              <Button variant="contained" onClick={toggleShowValues}>
+                {showValues ? 'Hide Values' : 'Show Values'}
+              </Button>
             </Box>
             <Box
               sx={{

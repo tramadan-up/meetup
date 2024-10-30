@@ -5,7 +5,10 @@ import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
-
+import PdfViewerEx from '../components/PdfViewerEx';
+import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton';
+import { ChevronLeft } from '@mui/icons-material';
 
 export default function CSlideView() {
   const navigate = useNavigate();
@@ -31,9 +34,8 @@ export default function CSlideView() {
           <Grid container size="grow" display="flex" justifyContent="center" alignItems="stretch" flex={6}>
             <Stack direction="column" spacing={1} display="flex" justifyContent="center" alignItems="stretch" flex={1}>
               <Grid size="grow" display="flex" justifyContent="center" alignItems="center" flex={10}>
-                <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 2, height: '90%', width: '90%', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
-                  <Typography variant="h6">Slides</Typography>
-                  <Typography>Slides Component</Typography>
+                <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 2, height: '90%', width: '90%', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  <PdfViewerEx />
                 </Box>
               </Grid>
             </Stack>
@@ -44,7 +46,11 @@ export default function CSlideView() {
                 <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 2, height: '90%', width: '90%', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
                   <Typography variant="h6">Token/Navigation</Typography>
                   <Typography>Token/Navigation Component</Typography>
-                  <button onClick={handleBackClick}>Back to Main View</button>
+                  <Tooltip title="Back to Main View">
+                    <IconButton onClick={handleBackClick} aria-label="Back to MainView">
+                      <ChevronLeft sx={{ fontSize: '70px' }} />
+                    </IconButton>
+                  </Tooltip>
                 </Box>
               </Grid>
             </Stack>

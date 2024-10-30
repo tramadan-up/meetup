@@ -12,7 +12,7 @@ type SortableItemProps = {
   entry: {
     id: string;
     name: string;
-    value: number;
+    value?: number;
   };
   onNameChange?: (id: string, newName: string) => void;
   onValueChange?: (id: string, newValue: number) => void;
@@ -41,8 +41,8 @@ export default function SortableItem({
 
   const handleSave = () => {
     if (onSave && name.trim()) {
-      onSave({ name: name.trim(), value: entry.value });
-      setName(''); // Clear input if needed
+      onSave({ name: name.trim(), value: entry.value ?? 0 });
+      setName('');
     }
   };
 
@@ -60,6 +60,7 @@ export default function SortableItem({
       sx={{
         display: 'flex',
         alignItems: 'center',
+        width: 380,
         gap: 1,
         padding: 1,
         border: '1px solid',
@@ -85,9 +86,9 @@ export default function SortableItem({
         variant="outlined"
         fullWidth
         size="small"
-        sx={{ flex: 2 }}
+        sx={{ flex: 2, width: 180 }}
       />
-      {!isNew && (
+      {!isNew && entry.value !== undefined && (
         <TextField
           type="number"
           value={entry.value}
