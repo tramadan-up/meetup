@@ -7,13 +7,11 @@ import Button from '@mui/material/Button';
 import StarIcon from '@mui/icons-material/Star';
 
 export default function FeedbackForm() {
-  const [score, setScore] = useState<number>(3); // Default score is 3
+  const [score, setScore] = useState<number>(3);
   const [comment, setComment] = useState<string>('');
 
   const handleSubmit = () => {
-    // Log or send feedback (score and comment) for now
     console.log('Feedback Submitted:', { score, comment });
-    // Reset form
     setScore(3);
     setComment('');
   };
@@ -35,7 +33,6 @@ export default function FeedbackForm() {
         Bewerte das Meeting
       </Typography>
 
-      {/* Score Slider */}
       <Box sx={{ marginBottom: 3, display: 'flex', alignItems: 'center', gap: 2, height: '15%' }}>
         <Typography variant="h6">Deine Bewertung:</Typography>
         <StarIcon color="primary" sx={{ fontSize: 30 }} />
@@ -51,7 +48,6 @@ export default function FeedbackForm() {
         />
       </Box>
 
-      {/* Comment Box */}
       <Box sx={{ 
         marginBottom: 3,
         height: '60%'
@@ -67,8 +63,7 @@ export default function FeedbackForm() {
           placeholder="Enter your feedback here..."
         />
       </Box>
-
-      {/* Submit Button */}
+      
       <Button
         variant="contained"
         color="primary"

@@ -23,20 +23,17 @@ export default function ReviewList() {
   const [averageScore, setAverageScore] = useState<number>(0);
 
   useEffect(() => {
-    // Load participants from sessionStorage
     const storedParticipants = sessionStorage.getItem(PARTICIPANT_LIST_KEY);
     if (storedParticipants) {
       setParticipants(JSON.parse(storedParticipants));
     }
 
-    // Load reviews from sessionStorage or set default reviews
     const storedReviews = sessionStorage.getItem(REVIEW_LIST_KEY);
     if (storedReviews) {
       const parsedReviews = JSON.parse(storedReviews);
       setReviews(parsedReviews);
       calculateAverageScore(parsedReviews);
     } else {
-      // Default reviews in German
       const germanReviews = [
         { id: '1', name: 'Lukas', comment: 'Sehr hilfreiche Person, danke!', score: 5 },
         { id: '2', name: 'Max', comment: 'Gut gemacht, ich bin zufrieden.', score: 4 },
@@ -99,12 +96,10 @@ export default function ReviewList() {
                 ':last-child': { borderBottom: 'none' },
               }}
             >
-              {/* Participant Name */}
               <Typography variant="h6" sx={{ flex: 1 }}>
                 {participant?.name || 'Unbekannter Teilnehmer'}
               </Typography>
 
-              {/* Comment */}
               <Typography
                 variant="body2"
                 sx={{ flex: 3, textAlign: 'center', marginX: 2 }}
@@ -112,12 +107,11 @@ export default function ReviewList() {
                 {review.comment}
               </Typography>
 
-              {/* Score */}
               <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end', gap: 0.5 }}>
                 {[...Array(5)].map((_, index) => (
                   <StarIcon
                     key={index}
-                    color={index < review.score ? 'primary' : 'disabled'} // Greyed out for less than score
+                    color={index < review.score ? 'primary' : 'disabled'}
                   />
                 ))}
                 <Typography variant="body2">{review.score}/5</Typography>

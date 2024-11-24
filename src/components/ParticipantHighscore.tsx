@@ -12,7 +12,7 @@ type TokenCounts = {
 };
 
 export default function ParticipantHighscore() {
-  const defaultTokens = 4; // Default for speaking and time tokens
+  const defaultTokens = 4;
   const pointsPerSpeakingToken = 100;
   const pointsPerTimeToken = 100;
   const pointsPerPunishmentToken = -50;
@@ -31,14 +31,13 @@ export default function ParticipantHighscore() {
   });
 
   useEffect(() => {
-    // Retrieve token counts from sessionStorage
+
     const speakingTokens = parseInt(sessionStorage.getItem(`${TOKEN_STORAGE_KEY}_speaking`) || `${defaultTokens}`, 10);
     const timeTokens = parseInt(sessionStorage.getItem(`${TOKEN_STORAGE_KEY}_time`) || `${defaultTokens}`, 10);
     const punishmentTokens = parseInt(sessionStorage.getItem(`${TOKEN_STORAGE_KEY}_punishment`) || '0', 10);
 
     setTokenCounts({ speaking: speakingTokens, time: timeTokens, punishment: punishmentTokens });
 
-    // Calculate scores
     const usedSpeakingTokens = defaultTokens - speakingTokens;
     const usedTimeTokens = defaultTokens - timeTokens;
 
