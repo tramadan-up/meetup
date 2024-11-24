@@ -41,7 +41,7 @@ export default function FeedbackForm() {
         <StarIcon color="primary" sx={{ fontSize: 30 }} />
         <Slider
           value={score}
-          onChange={(e, newValue) => setScore(newValue as number)}
+          onChange={(_, newValue) => setScore(newValue as number)}
           min={1}
           max={5}
           step={1}
