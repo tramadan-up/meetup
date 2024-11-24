@@ -4,6 +4,8 @@ import Box from '@mui/material/Box'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
+import Highscore from '../components/Highscore';
+import ReviewList from '../components/ReviewList';
 
 export default function CReviewView() {
   const navigate = useNavigate();
@@ -19,6 +21,7 @@ export default function CReviewView() {
               <Typography variant="h6" sx={{ flexGrow: 1 }}>
                 Meeting Name, Datum, etc.
               </Typography>
+              <button onClick={handleBackClick}>Back to Main View</button>
             </Toolbar>
           </AppBar>
         </Box>
@@ -27,18 +30,16 @@ export default function CReviewView() {
         <Grid container spacing={5} display="flex" justifyContent="center" alignItems="stretch" flex={1} minHeight="90vh" flexWrap="wrap">
           <Grid container size="auto" display="flex" justifyContent="center" alignItems="stretch" flex={2}>
             <Grid size={2} display="flex" justifyContent="center" alignItems="center" flex={1}>
-              <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 2, height: '75%', width: '75%', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
-                <Typography variant="h6">Bewertung</Typography>
-                <Typography>Bewertung Component</Typography>
-                <button onClick={handleBackClick}>Back to Main View</button>
+              <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 2, height: '85%', width: '75%', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
+                
+                <ReviewList/>
               </Box>
             </Grid>
           </Grid>
           <Grid container size="grow" display="flex" justifyContent="center" alignItems="stretch" flex={1} >
             <Grid size="grow" display="flex" justifyContent="center" alignItems="center" flex={1}>
-              <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 2, height: '75%', width: '75%', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
-                <Typography variant="h6">Highscore</Typography>
-                <Typography>Highscore Component</Typography>
+              <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 2, height: '85%', width: '75%', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
+                <Highscore/>
               </Box>
             </Grid>
           </Grid>
