@@ -8,6 +8,7 @@ import Stack from '@mui/material/Stack'
 import Notes from '../components/Notes';
 import PdfViewer from '../components/PdfViewer';
 import ParticipantList from '../components/ParticipantList';
+import CircularTimer from '../components/CircularTimer';
 
 
 export default function CMainView() {
@@ -23,24 +24,48 @@ export default function CMainView() {
   };
 
   return (
-    <Box sx={{ flex: 1, paddingLeft: '5vw', paddingRight: '5vw', paddingTop: '1vh' }}>
-      <Grid minHeight="5vh">
+    <Box sx={{
+            flex: 1,
+            paddingLeft: '1%',
+            paddingRight: '1%',
+            paddingTop: '0.1%'
+            }}>
+      <Grid minHeight="1%">
         <Box sx={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
           <AppBar position="static" sx={{ bgcolor: 'white', borderRadius: '8px', textAlign: 'center', color: 'black' }}>
             <Toolbar>
               <Typography variant="h6" sx={{ flexGrow: 1 }}>
                 Meeting Name, Datum, etc.
               </Typography>
+              <button onClick={handleSlideClick}>Slide View</button>
+              <button onClick={handleEndClick}>End Meeting</button>
+              <button onClick={handleBackClick}>Back to Creation View</button>
             </Toolbar>
           </AppBar>
         </Box>
       </Grid>
-      <Box sx={{ flex: 1, paddingTop: '1vh' }}>
-        <Grid container spacing={5} display="flex" justifyContent="center" alignItems="stretch" flexGrow={1} minHeight="90vh" flexWrap="wrap">
+      <Box sx={{
+              flex: 1,
+              paddingTop: '0.1%',
+              spacing: '5',
+              }}>
+        <Grid container spacing={5} display="flex" justifyContent="center" alignItems="stretch" flexGrow={1} height="80%" width="95%" flexWrap="wrap">
           <Grid container size="grow" display="flex" justifyContent="center" alignItems="stretch" flex={2} marginTop={3} marginBottom={3}>
             <Stack direction="column" spacing={1} display="flex" justifyContent="center" alignItems="stretch" flex={1}>
               <Grid size="grow" display="flex" justifyContent="center" alignItems="center" flex={1}>
-                <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 2, height: '95%', width: '90%', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Box sx={{
+                        border: '1px solid grey',
+                        borderRadius: '8px',
+                        textAlign: 'center',
+                        p: 2,
+                        height: '95%',
+                        width: '90%',
+                        flex: 1,
+                        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                        }}>
                   <PdfViewer isCoordinator={true} />
                 </Box>
               </Grid>
@@ -49,16 +74,32 @@ export default function CMainView() {
           <Grid container size="grow" display="flex" justifyContent="center" alignItems="stretch" flex={1} marginTop={3} marginBottom={3}>
             <Stack direction="column" display="flex" justifyContent="center" alignItems="stretch" flex={1} spacing={2}>
               <Grid size="grow" display="flex" justifyContent="center" alignItems="center" flex={2}>
-                <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 1, height: '95%', width: '90%', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
-                  <Typography variant="h6">Countdowntimer</Typography>
-                  <Typography>Countdowntimer Component</Typography>
-                  <button onClick={handleSlideClick}>Slide View</button>
-                  <button onClick={handleEndClick}>End Meeting</button>
-                  <button onClick={handleBackClick}>Back to Creation View</button>
+                <Box sx={{
+                        border: '1px solid grey',
+                        borderRadius: '8px',
+                        textAlign: 'center',
+                        p: 1,
+                        height: '95%',
+                        width: '90%',
+                        flex: 1,
+                        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
+                        }}>
+                  <CircularTimer/>
                 </Box>
               </Grid>
               <Grid size="grow" display="flex" justifyContent="center" alignItems="center" flex={1}>
-                <Box sx={{ border: '1px solid grey', borderRadius: '8px', p: 1, height: '90%', width: '90%', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Box sx={{
+                        border: '1px solid grey',
+                        borderRadius: '8px',
+                        p: 1,
+                        height: '90%',
+                        width: '90%',
+                        flex: 1,
+                        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                        }}>
                   <Notes />
                 </Box>
               </Grid>
@@ -67,7 +108,15 @@ export default function CMainView() {
           <Grid container size="grow" display="flex" justifyContent="center" alignItems="stretch" flex={1} marginTop={3} marginBottom={3}>
             <Stack direction="column" spacing={1} display="flex" justifyContent="center" alignItems="stretch" flex={1}>
               <Grid size="grow" display="flex" justifyContent="center" alignItems="center" flex={1}>
-                <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 2, height: '95%', width: '90%', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
+                <Box sx={{
+                        border: '1px solid grey',
+                        borderRadius: '8px',
+                        textAlign: 'center',
+                        p: 2, height: '95%',
+                        width: '90%',
+                        flex: 1,
+                        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
+                        }}>
                   <ParticipantList />
                 </Box>
               </Grid>

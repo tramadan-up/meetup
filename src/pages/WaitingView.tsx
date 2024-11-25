@@ -22,7 +22,7 @@ export default function WaitingView() {
                 <Typography>Meeting Creation/Ranking Component</Typography>
                 <button onClick={handleStartClick}>Start Meeting</button>
                 <button onClick={handleBackClick}>Back to Login</button>
-
+                <Typography>Bitte warten bis das Meeting gestartet wird.</Typography>
               </Box>
             </Grid>
           </Grid>

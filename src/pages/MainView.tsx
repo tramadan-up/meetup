@@ -8,16 +8,11 @@ import Stack from '@mui/material/Stack'
 import PdfViewer from '../components/PdfViewer';
 import Notes from '../components/Notes';
 import Token from '../components/Token';
+import CircularTimer from '../components/CircularTimer';
 
 
 export default function MainView() {
   const navigate = useNavigate();
-  const handleSlidesClick = () => {
-    navigate('/participant/slides');
-  };
-  const handleEndClick = () => {
-    navigate('/participant/review');
-  };
   const handleBackClick = () => {
     navigate('/');
   };
@@ -30,6 +25,7 @@ export default function MainView() {
               <Typography variant="h6" sx={{ flexGrow: 1 }}>
                 Meeting Name, Datum, etc. SCORE
               </Typography>
+              <button onClick={handleBackClick}>Back to Waiting View</button>
             </Toolbar>
           </AppBar>
         </Box>
@@ -39,17 +35,41 @@ export default function MainView() {
           <Grid container size="grow" display="flex" justifyContent="center" alignItems="stretch" flex={1} marginTop={3} marginBottom={3}>
             <Stack direction="column" spacing={1} display="flex" justifyContent="space-between" alignItems="stretch" flex={1}>
               <Grid size="grow" display="flex" justifyContent="center" alignItems="center" flex={1}>
-                <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 1, height: '90%', width: '75%', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
+                <Box sx={{
+                          border: '1px solid grey',
+                          borderRadius: '8px',
+                          textAlign: 'center',
+                          p: 1,
+                          height: '90%',
+                          width: '75%',
+                          flex: 1,
+                          boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'flex-start'
+                          }}>
                   <Stack direction="column" spacing={8} padding={5}>
-                    <Typography variant="h4">Speaking Token</Typography>
+                    <Typography variant="h4">Redetoken</Typography>
                     <Token type="speaking" size="big" />
                   </Stack>
                 </Box>
               </Grid>
               <Grid size="grow" display="flex" justifyContent="center" alignItems="center" flex={1}>
-                <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 1, height: '90%', width: '75%', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
+                <Box sx={{
+                          border: '1px solid grey',
+                          borderRadius: '8px',
+                          textAlign: 'center',
+                          p: 1,
+                          height: '90%',
+                          width: '75%',
+                          flex: 1,
+                          boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'flex-start'
+                          }}>
                   <Stack direction="column" spacing={8} padding={5}>
-                    <Typography variant="h4">Punishment Token</Typography>
+                    <Typography variant="h4">Straftoken</Typography>
                     <Token type="punishment" size="big" />
                   </Stack>
                 </Box>
@@ -58,24 +78,56 @@ export default function MainView() {
           </Grid>
           <Grid container size="grow" display="flex" justifyContent="center" alignItems="stretch" flex={1} marginTop={3} marginBottom={3}>
             <Grid size="grow" display="flex" justifyContent="center" alignItems="center" flex={1}>
-              <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 1, height: '95%', width: '90%', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
-                <Typography variant="h6">Countdowntimer</Typography>
-                <Typography>Countdowntimer Component</Typography>
-                <button onClick={handleSlidesClick}>Slides</button>
-                <button onClick={handleEndClick}>End Meeting</button>
-                <button onClick={handleBackClick}>Back to Waiting View</button>
+              <Box sx={{
+                        border: '1px solid grey',
+                        borderRadius: '8px',
+                        textAlign: 'center',
+                        p: 1,
+                        height: '95%',
+                        width: '90%',
+                        flex: 1,
+                        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
+                        }}>
+                <CircularTimer useDefaults={true}/>
+                <Stack direction="column" spacing={8} padding={5}>
+                    <Typography variant="h4">Zeittoken</Typography>
+                    <Token type="time" size="big" />
+                  </Stack>
               </Box>
             </Grid>
           </Grid>
           <Grid container size="grow" display="flex" justifyContent="center" alignItems="stretch" flex={1} marginTop={3} marginBottom={3}>
             <Stack direction="column" spacing={1} display="flex" justifyContent="center" alignItems="stretch" flex={1}>
               <Grid size="grow" display="flex" justifyContent="center" alignItems="center" flex={1}>
-                <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 1, height: '90%', width: '75%', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Box sx={{
+                          border: '1px solid grey',
+                          borderRadius: '8px',
+                          textAlign: 'center',
+                          p: 1,
+                          height: '90%',
+                          width: '75%',
+                          flex: 1,
+                          boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'center'
+                          }}>
                   <PdfViewer />
                 </Box>
               </Grid>
               <Grid size="grow" display="flex" justifyContent="center" alignItems="center" flex={1}>
-                <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 1, height: '90%', width: '75%', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Box sx={{
+                          border: '1px solid grey',
+                          borderRadius: '8px',
+                          textAlign: 'center',
+                          p: 1, height: '90%',
+                          width: '75%',
+                          flex: 1,
+                          boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'center'
+                          }}>
                   <Notes isParticipant={true} />
                 </Box>
               </Grid>

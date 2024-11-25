@@ -40,13 +40,11 @@ export default function CreationForm() {
         parseInt(sessionStorage.getItem(TIMER_TOKENS_KEY) || '3', 10)
     );
     const [showValues, setShowValues] = useState(() => {
-        // Initialize showValues from sessionStorage if it exists
         const storedShowValues = sessionStorage.getItem(SHOW_VALUES_KEY);
         return storedShowValues ? JSON.parse(storedShowValues) : true;
     });
 
 
-    // Navigation
     const navigate = useNavigate();
     const handleCreationClick = () => {
         navigate('/coordinator/main');
@@ -55,7 +53,6 @@ export default function CreationForm() {
         navigate('/');
     };
 
-    // Load values from sessionStorage
     useEffect(() => {
         const storedName = sessionStorage.getItem('name');
         if (storedName) {
@@ -84,19 +81,16 @@ export default function CreationForm() {
         sessionStorage.setItem(SHOW_VALUES_KEY, JSON.stringify(showValues));
     }, [showValues]);
 
-    // Save meeting Name to sessionStorage
     useEffect(() => {
         sessionStorage.setItem(MEETING_NAME_STORAGE_KEY, meetingName);
     }, [meetingName]);
 
-    // Save entries to sessionStorage
     useEffect(() => {
         if (entries.length > 0) {
             sessionStorage.setItem(ENTRIES_STORAGE_KEY, JSON.stringify(entries));
         }
     }, [entries]);
 
-    // Provide default Entries
     const setDefaultEntries = () => {
         const defaultEntries: Entry[] = [
             { id: '1', name: 'Organisation', value: 15 },
@@ -112,7 +106,6 @@ export default function CreationForm() {
         setMeetingName(event.target.value);
     };
 
-    // Entry utility
     const saveNewEntry = (newEntry: { name: string; value: number }) => {
         setEntries([...entries, { id: `${entries.length + 1}`, ...newEntry }]);
     };
@@ -138,7 +131,6 @@ export default function CreationForm() {
         setEntries(entries.map((entry) => (entry.id === id ? { ...entry, value: newValue } : entry)));
     };
 
-    // Drag and Drop utility
     const handleDragEnd = (event: any) => {
         const { active, over } = event;
         if (active.id !== over.id) {
@@ -148,13 +140,11 @@ export default function CreationForm() {
         }
     };
 
-    // Token change utility
     useEffect(() => {
         sessionStorage.setItem(SPEAKING_TOKENS_KEY, speakingTokens.toString());
         sessionStorage.setItem(TIMER_TOKENS_KEY, timerTokens.toString());
     }, [speakingTokens, timerTokens]);
 
-    // Auto adjust values
     const onAutoClick = () => {
         if (entries.length === 5) {
             const updatedEntries = entries.map((entry, index) => {
@@ -181,7 +171,20 @@ export default function CreationForm() {
     };
 
     return (
-        <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 2, height: '95%', maxWidth: '50vw', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '5vh' }}>
+        <Box sx={{
+                border: '1px solid grey',
+                borderRadius: '8px',
+                textAlign: 'center',
+                p: 2,
+                height: '95%',
+                maxWidth: '50vw',
+                flex: 1,
+                boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginTop: '5vh'
+                }}>
             <Stack direction="column" spacing={5}>
                 <Grid>
                     <Typography>Willkommen, {name}!</Typography>

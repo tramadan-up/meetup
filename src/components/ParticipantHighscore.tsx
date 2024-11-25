@@ -74,10 +74,10 @@ export default function ParticipantHighscore() {
       <Box sx={{ marginBottom: 6 }}>
         <Box sx={{ marginBottom: 6 }}>
           <Typography variant="h6">
-            Übrige Rede Token: {tokenCounts.speaking}
+            Übrige Redetoken: {tokenCounts.speaking}
           </Typography>
           <Typography variant="body1" sx={{ marginLeft: 2 }}>
-            Punkte durch Rede Token: {scoreDetails.speaking}
+            Punkte durch Redetoken: {scoreDetails.speaking}
           </Typography>
           <Typography>
           (100 Punkte pro Token)
@@ -85,10 +85,10 @@ export default function ParticipantHighscore() {
         </Box>
         <Box sx={{ marginBottom: 6 }}>
           <Typography variant="h6">
-            Übrige Zeit Token: {tokenCounts.time}
+            Übrige Zeittoken: {tokenCounts.time}
           </Typography>
           <Typography variant="body1" sx={{ marginLeft: 2 }}>
-            Punktr durch Zeit Token: {scoreDetails.time}
+            Punktr durch Zeittoken: {scoreDetails.time}
           </Typography>
           <Typography>
           (100 Punkte pro Token)
@@ -96,10 +96,10 @@ export default function ParticipantHighscore() {
         </Box>
         <Box sx={{ marginBottom: 6 }}>
           <Typography variant="h6">
-            Straf Token: {tokenCounts.punishment}
+            Straftoken: {tokenCounts.punishment}
           </Typography>
           <Typography variant="body1" sx={{ marginLeft: 2 }}>
-            Punkte durch Straf Token verloren: {scoreDetails.punishment}
+            Punkte durch Straftoken verloren: {scoreDetails.punishment}
           </Typography>
           <Typography>
           (-50 Punkte pro Token)

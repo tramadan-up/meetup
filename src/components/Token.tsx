@@ -17,13 +17,11 @@ const TOKEN_STORAGE_KEY = 'tokenCount';
 export default function Token({ type, size }: TokenProps) {
     const defaultCount = type === 'punishment' ? 0 : 4;
 
-    // Initialize tokenCount from sessionStorage or set to default if not present
     const [tokenCount, setTokenCount] = useState<number>(() => {
         const storedTokenCount = sessionStorage.getItem(`${TOKEN_STORAGE_KEY}_${type}`);
         return storedTokenCount !== null ? parseInt(storedTokenCount, 10) : defaultCount;
     });
 
-    // Save token count to sessionStorage whenever it changes
     useEffect(() => {
         sessionStorage.setItem(`${TOKEN_STORAGE_KEY}_${type}`, tokenCount.toString());
     }, [tokenCount, type]);

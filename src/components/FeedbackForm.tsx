@@ -70,7 +70,7 @@ export default function FeedbackForm() {
         onClick={handleSubmit}
         sx={{ width: '15%', padding: 1 }}
       >
-        Submit
+        Abgeben
       </Button>
     </Box>
   );
