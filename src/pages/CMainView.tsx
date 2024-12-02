@@ -13,9 +13,6 @@ import TimerComponent from '../components/TimerComponent';
 
 export default function CMainView() {
   const navigate = useNavigate();
-  const handleSlideClick = () => {
-    navigate('/coordinator/slides');
-  };
   const handleEndClick = () => {
     navigate('/coordinator/review');
   };
