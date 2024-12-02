@@ -8,7 +8,7 @@ import Stack from '@mui/material/Stack'
 import PdfViewer from '../components/PdfViewer';
 import Notes from '../components/Notes';
 import Token from '../components/Token';
-import CircularTimer from '../components/CircularTimer';
+import TimerComponent from '../components/TimerComponent';
 
 
 export default function MainView() {
@@ -88,7 +88,7 @@ export default function MainView() {
                         flex: 1,
                         boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
                         }}>
-                <CircularTimer useDefaults={true}/>
+                <TimerComponent userType={true} viewType='main'/>
                 <Stack direction="column" spacing={8} padding={5}>
                     <Typography variant="h4">Zeittoken</Typography>
                     <Token type="time" size="big" />

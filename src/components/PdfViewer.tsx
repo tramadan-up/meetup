@@ -24,17 +24,14 @@ export default function PdfViewer({ isCoordinator = false }: PdfViewerProps) {
         navigate('/coordinator/slides');
     };
     const [currentSlide, setCurrentSlide] = useState(() => {
-        // Initialize from sessionStorage or default to 0
         const storedSlideIndex = sessionStorage.getItem(SLIDE_INDEX_STORAGE_KEY);
         return storedSlideIndex ? parseInt(storedSlideIndex, 10) : 0;
     });
 
-    // Save current slide index to sessionStorage whenever it changes
     useEffect(() => {
         sessionStorage.setItem(SLIDE_INDEX_STORAGE_KEY, currentSlide.toString());
     }, [currentSlide]);
 
-    // Handlers for navigation and expand button
     const handleNextSlide = () => {
         if (currentSlide < TOTAL_SLIDES - 1) {
             setCurrentSlide((prev) => prev + 1);

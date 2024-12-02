@@ -9,6 +9,7 @@ import PdfViewerEx from '../components/PdfViewerEx';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import { ChevronLeft } from '@mui/icons-material';
+import TimerComponent from '../components/TimerComponent';
 
 export default function CSlideView() {
   const navigate = useNavigate();
@@ -22,9 +23,7 @@ export default function CSlideView() {
         <Box sx={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
           <AppBar position="static" sx={{ bgcolor: 'white', borderRadius: '8px', textAlign: 'center', color: 'black' }}>
             <Toolbar>
-              <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                Countdowntimer, Zurück-Button
-              </Typography>
+              <TimerComponent viewType='slide'/>
             </Toolbar>
           </AppBar>
         </Box>
@@ -35,7 +34,7 @@ export default function CSlideView() {
             <Stack direction="column" spacing={1} display="flex" justifyContent="center" alignItems="stretch" flex={1}>
               <Grid size="grow" display="flex" justifyContent="center" alignItems="center" flex={10}>
                 <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 2, height: '90%', width: '90%', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                  <PdfViewerEx />
+                  <PdfViewerEx isCoordinator={true} />
                 </Box>
               </Grid>
             </Stack>
@@ -44,8 +43,6 @@ export default function CSlideView() {
             <Stack direction="column" spacing={1} display="flex" justifyContent="center" alignItems="stretch" flex={1}>
               <Grid size="grow" display="flex" justifyContent="center" alignItems="center" flex={1}>
                 <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 2, height: '90%', width: '90%', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
-                  <Typography variant="h6">Token/Navigation</Typography>
-                  <Typography>Token/Navigation Component</Typography>
                   <Tooltip title="Back to Main View">
                     <IconButton onClick={handleBackClick} aria-label="Back to MainView">
                       <ChevronLeft sx={{ fontSize: '70px' }} />

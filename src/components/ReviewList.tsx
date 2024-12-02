@@ -106,7 +106,7 @@ export default function ReviewList() {
               >
                 {review.comment}
               </Typography>
-
+                
               <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end', gap: 0.5 }}>
                 {[...Array(5)].map((_, index) => (
                   <StarIcon

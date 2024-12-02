@@ -8,7 +8,7 @@ import Stack from '@mui/material/Stack'
 import Notes from '../components/Notes';
 import PdfViewer from '../components/PdfViewer';
 import ParticipantList from '../components/ParticipantList';
-import CircularTimer from '../components/CircularTimer';
+import TimerComponent from '../components/TimerComponent';
 
 
 export default function CMainView() {
@@ -37,9 +37,8 @@ export default function CMainView() {
               <Typography variant="h6" sx={{ flexGrow: 1 }}>
                 Meeting Name, Datum, etc.
               </Typography>
-              <button onClick={handleSlideClick}>Slide View</button>
-              <button onClick={handleEndClick}>End Meeting</button>
-              <button onClick={handleBackClick}>Back to Creation View</button>
+              <button onClick={handleEndClick}>Meeting beenden</button>
+              <button onClick={handleBackClick}>Züruck</button>
             </Toolbar>
           </AppBar>
         </Box>
@@ -49,7 +48,7 @@ export default function CMainView() {
               paddingTop: '0.1%',
               spacing: '5',
               }}>
-        <Grid container spacing={5} display="flex" justifyContent="center" alignItems="stretch" flexGrow={1} height="80%" width="95%" flexWrap="wrap">
+        <Grid container spacing={7} display="flex" justifyContent="center" alignItems="stretch" flexGrow={1} height="85%" width="100%" flexWrap="wrap">
           <Grid container size="grow" display="flex" justifyContent="center" alignItems="stretch" flex={2} marginTop={3} marginBottom={3}>
             <Stack direction="column" spacing={1} display="flex" justifyContent="center" alignItems="stretch" flex={1}>
               <Grid size="grow" display="flex" justifyContent="center" alignItems="center" flex={1}>
@@ -84,7 +83,7 @@ export default function CMainView() {
                         flex: 1,
                         boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
                         }}>
-                  <CircularTimer/>
+                  <TimerComponent viewType='main'/>
                 </Box>
               </Grid>
               <Grid size="grow" display="flex" justifyContent="center" alignItems="center" flex={1}>

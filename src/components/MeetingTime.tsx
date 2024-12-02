@@ -48,7 +48,7 @@ export default function MeetingTime({ entries, onAutoClick, showValues }: Meetin
             {showValues ? (
                 <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
                     <Typography variant="h6" sx={{ flex: 1 }}>
-                        Total Time: {totalTime} minutes
+                        Gesamtzeit: {totalTime} Minuten
                     </Typography>
                     <Tooltip title="Auto">
                         <IconButton color="primary" aria-label="Auto" onClick={onAutoClick}>
@@ -59,39 +59,39 @@ export default function MeetingTime({ entries, onAutoClick, showValues }: Meetin
             ) : (
                 <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 2, width: '25vw' }}>
                     <FormControl fullWidth>
-                        <InputLabel>Total Meeting Time</InputLabel>
+                        <InputLabel>Gesamtzeit</InputLabel>
                         <Select
                             value={totalMeetingTime}
                             onChange={(e) => setTotalMeetingTime(e.target.value)}
-                            label="Total Meeting Time"
+                            label="Gesamtzeit"
                         >
-                            <MenuItem value="30">30 Minutes</MenuItem>
-                            <MenuItem value="45">45 Minutes</MenuItem>
-                            <MenuItem value="60">60 Minutes</MenuItem>
+                            <MenuItem value="30">30 Minuten</MenuItem>
+                            <MenuItem value="45">45 Minuten</MenuItem>
+                            <MenuItem value="60">60 Minuten</MenuItem>
                         </Select>
                     </FormControl>
                     <FormControl fullWidth>
-                        <InputLabel>Organisation Time</InputLabel>
+                        <InputLabel>Organisationszeit</InputLabel>
                         <Select
                             value={organizationTime}
                             onChange={(e) => setOrganizationTime(e.target.value)}
-                            label="Organisation Time"
+                            label="Organisationszeit"
                         >
-                            <MenuItem value="5">5 Minutes</MenuItem>
-                            <MenuItem value="10">10 Minutes</MenuItem>
-                            <MenuItem value="15">15 Minutes</MenuItem>
+                            <MenuItem value="5">5 Minuten</MenuItem>
+                            <MenuItem value="10">10 Minuten</MenuItem>
+                            <MenuItem value="15">15 Minuten</MenuItem>
                         </Select>
                     </FormControl>
                     <FormControl fullWidth>
-                        <InputLabel>Time Slice</InputLabel>
+                        <InputLabel>Zeitscheibe</InputLabel>
                         <Select
                             value={sliceTime}
                             onChange={(e) => setSliceTime(e.target.value)}
-                            label="Time Slice"
+                            label="Zeitscheibe"
                         >
-                            <MenuItem value="5">5 Minutes</MenuItem>
-                            <MenuItem value="10">10 Minutes</MenuItem>
-                            <MenuItem value="15">15 Minutes</MenuItem>
+                            <MenuItem value="5">5 Minuten</MenuItem>
+                            <MenuItem value="10">10 Minuten</MenuItem>
+                            <MenuItem value="15">15 Minuten</MenuItem>
                         </Select>
                     </FormControl>
                 </Box>

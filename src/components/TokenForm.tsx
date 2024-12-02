@@ -39,7 +39,7 @@ export default function TokenForm({
             }}
         >
             <TextField
-                label="Speaking Tokens"
+                label="Redetoken"
                 type="number"
                 value={speakingTokens}
                 onChange={handleSpeakingTokensChange}
@@ -47,7 +47,7 @@ export default function TokenForm({
                 fullWidth
             />
             <TextField
-                label="Timer Tokens"
+                label="Zeittoken"
                 type="number"
                 value={timerTokens}
                 onChange={handleTimerTokensChange}

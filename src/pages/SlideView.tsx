@@ -3,13 +3,13 @@ import Grid from '@mui/material/Grid2'
 import Box from '@mui/material/Box'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
 import PdfViewerEx from '../components/PdfViewerEx';
 import Token from '../components/Token';
 import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip';
 import { ChevronLeft } from '@mui/icons-material';
+import TimerComponent from '../components/TimerComponent';
 
 
 export default function SlideView() {
@@ -24,9 +24,7 @@ export default function SlideView() {
         <Box sx={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
           <AppBar position="static" sx={{ bgcolor: 'white', borderRadius: '8px', textAlign: 'center', color: 'black' }}>
             <Toolbar>
-              <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                Countdowntimer, Zurück-Button
-              </Typography>
+              <TimerComponent userType={true} viewType='slide'/>
             </Toolbar>
           </AppBar>
         </Box>

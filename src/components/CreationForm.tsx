@@ -244,7 +244,7 @@ export default function CreationForm() {
                                 </SortableContext>
                             </DndContext>
                             <Button variant="contained" onClick={toggleShowValues}>
-                                {showValues ? 'Hide Values' : 'Show Values'}
+                                {showValues ? 'Smart' : 'Basic'}
                             </Button>
                         </Box>
                         <Box
@@ -275,8 +275,8 @@ export default function CreationForm() {
                     </Stack>
                 </Grid>
                 <Grid>
-                    <button onClick={handleCreationClick}>Start Meeting</button>
-                    <button onClick={handleBackClick}>Back to Login</button>
+                    <button onClick={handleCreationClick}>Meeting starten</button>
+                    <button onClick={handleBackClick}>Zurück zum Login</button>
                 </Grid>
             </Stack>
         </Box>

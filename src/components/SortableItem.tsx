@@ -76,7 +76,7 @@ export default function SortableItem({
                 </Box>
             )}
             <TextField
-                placeholder={isNew ? "New Entry Name" : undefined}
+                placeholder={isNew ? "Neuer Eintrag" : undefined}
                 value={name}
                 onChange={(e) => {
                     setName(e.target.value);
@@ -116,4 +116,3 @@ export default function SortableItem({
         </Box>
     );
 }
-

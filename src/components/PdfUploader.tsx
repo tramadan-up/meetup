@@ -11,7 +11,7 @@ export default function PdfUploader() {
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file && file.type === "application/pdf") {
-            setFileName(file.name); // Set the file name to simulate upload
+            setFileName(file.name);
         } else if (file) {
             alert("Please select a PDF file.");
         }
@@ -44,7 +44,7 @@ export default function PdfUploader() {
                 component="label"
                 startIcon={<UploadFileIcon />}
             >
-                Select PDF File
+                PDF Datei auswählen
                 <input
                     type="file"
                     accept=".pdf"
@@ -59,7 +59,7 @@ export default function PdfUploader() {
 
                     <Box sx={{ display: 'flex', gap: 1 }}>
                         <Button variant="outlined" startIcon={<PreviewIcon />} onClick={handlePreview}>
-                            Preview
+                            Vorschau
                         </Button>
                         <Button variant="contained" color="primary" onClick={handleUpload}>
                             Upload
