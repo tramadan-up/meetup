@@ -73,35 +73,35 @@ export default function ParticipantHighscore() {
       <Divider sx={{ marginBottom: 6 }} />
       <Box sx={{ marginBottom: 6 }}>
         <Box sx={{ marginBottom: 6 }}>
-          <Typography variant="h6">
+          <Typography variant="h5">
             Übrige Redetoken: {tokenCounts.speaking}
           </Typography>
-          <Typography variant="body1" sx={{ marginLeft: 2 }}>
+          <Typography variant="body1" color='grey' sx={{ marginLeft: 2 }}>
             Punkte durch Redetoken: {scoreDetails.speaking}
           </Typography>
-          <Typography>
+          <Typography color='grey'>
           (100 Punkte pro Token)
           </Typography>
         </Box>
         <Box sx={{ marginBottom: 6 }}>
-          <Typography variant="h6">
+          <Typography variant="h5">
             Übrige Zeittoken: {tokenCounts.time}
           </Typography>
-          <Typography variant="body1" sx={{ marginLeft: 2 }}>
-            Punktr durch Zeittoken: {scoreDetails.time}
+          <Typography variant="body1" color='grey' sx={{ marginLeft: 2 }}>
+            Punkte durch Zeittoken: {scoreDetails.time}
           </Typography>
-          <Typography>
+          <Typography color='grey'>
           (100 Punkte pro Token)
           </Typography>
         </Box>
         <Box sx={{ marginBottom: 6 }}>
-          <Typography variant="h6">
+          <Typography variant="h5">
             Straftoken: {tokenCounts.punishment}
           </Typography>
-          <Typography variant="body1" sx={{ marginLeft: 2 }}>
+          <Typography variant="body1" color='grey' sx={{ marginLeft: 2 }}>
             Punkte durch Straftoken verloren: {scoreDetails.punishment}
           </Typography>
-          <Typography>
+          <Typography color='grey'>
           (-50 Punkte pro Token)
           </Typography>
         </Box>

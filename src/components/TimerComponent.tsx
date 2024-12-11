@@ -176,18 +176,23 @@ export default function TimerComponent({ userType = false, viewType }: TimerComp
             textShadow: '0px 0px 5px rgba(0, 0, 0, 0.5)',
           }}
         >
-          <Typography variant="h6" sx={{ marginRight: 2 }}>
+          <Typography variant="h4" sx={{ marginRight: 2 }}>
             {currentEntry.name}
           </Typography>
           <Typography variant="h4" sx={{ marginRight: 2 }}>
             {Math.floor(currentRemainingTime / 60)}:{String(currentRemainingTime % 60).padStart(2, '0')}
           </Typography>
           <Box sx={{ display: 'flex', gap: 2 }}>
-            <Button variant="contained" onClick={handlePrevious} disabled={currentEntryIndex === 0}>
+            <Button 
+              variant="contained" 
+              color={userType ? 'error' : 'primary'}
+              onClick={handlePrevious} 
+              disabled={currentEntryIndex === 0}>
               Vorheriges Thema
             </Button>
             <Button
           variant="contained"
+          color={userType ? 'error' : 'primary'}
           onClick={() => setIsRunning((prev) => !prev)}
           disabled={entries.length === 0}
         >
@@ -195,6 +200,7 @@ export default function TimerComponent({ userType = false, viewType }: TimerComp
         </Button>
             <Button
               variant="contained"
+              color={userType ? 'error' : 'primary'}
               onClick={currentEntryIndex === entries.length - 1 ? handleEndClick : handleNext}
               disabled={entries.length === 0}
             >
@@ -218,7 +224,7 @@ export default function TimerComponent({ userType = false, viewType }: TimerComp
         backgroundColor: '#f9f9f9',
       }}
     >
-      <Typography variant="h6">{currentEntry.name}</Typography>
+      <Typography variant="h4">{currentEntry.name}</Typography>
 
       <Box
         sx={{
@@ -252,13 +258,16 @@ export default function TimerComponent({ userType = false, viewType }: TimerComp
       <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: 3 }}>
         <Button
           variant="outlined"
+          color={userType ? 'error' : 'primary'}
           onClick={handlePrevious}
           disabled={currentEntryIndex === 0}
+          
         >
           Vorheriges Thema
         </Button>
         <Button
           variant="contained"
+          color={userType ? 'error' : 'primary'}
           onClick={() => setIsRunning((prev) => !prev)}
           disabled={entries.length === 0}
         >
@@ -266,6 +275,7 @@ export default function TimerComponent({ userType = false, viewType }: TimerComp
         </Button>
         <Button
           variant="outlined"
+          color={userType ? 'error' : 'primary'}
           onClick={currentEntryIndex === entries.length - 1 ? handleEndClick : handleNext}
           disabled={entries.length === 0}
         >

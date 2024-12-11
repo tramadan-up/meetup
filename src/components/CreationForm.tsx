@@ -29,7 +29,6 @@ const TIMER_TOKENS_KEY = 'timerTokens';
 const SHOW_VALUES_KEY = 'showValues';
 
 export default function CreationForm() {
-    // Stored Values
     const [name, setName] = useState('');
     const [meetingName, setMeetingName] = useState('Meeting Name');
     const [entries, setEntries] = useState<Entry[]>([]);
@@ -275,8 +274,8 @@ export default function CreationForm() {
                     </Stack>
                 </Grid>
                 <Grid>
-                    <button onClick={handleCreationClick}>Meeting starten</button>
-                    <button onClick={handleBackClick}>Zurück zum Login</button>
+                    <Button variant='contained' color='primary' onClick={handleCreationClick}>Meeting starten</Button>
+                    <Button variant='outlined' color='error' onClick={handleBackClick}>Zurück zum Login</Button>
                 </Grid>
             </Stack>
         </Box>

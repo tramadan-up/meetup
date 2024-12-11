@@ -15,9 +15,9 @@ export default function LoginForm() {
         sessionStorage.setItem('name', name);
         sessionStorage.setItem('code', code);
 
-        if (name && code === '111111') {
+        if (name && code === '111') {
             navigate('/coordinator');
-        } else if (name && code === '666666') {
+        } else if (name && code === '666') {
             navigate('/participant');
         } else {
             alert('Invalid code or missing name! Please enter a valid code and a name.');

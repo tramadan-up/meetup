@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid2'
 import Box from '@mui/material/Box'
 import AppBar from '@mui/material/AppBar'
@@ -21,7 +22,7 @@ export default function ReviewView() {
               <Typography variant="h6" sx={{ flexGrow: 1 }}>
                 Meeting Name, Datum, etc.
               </Typography>
-              <button onClick={handleBackClick}>Back to Main View</button>
+              <Button variant='outlined' color='error' onClick={handleBackClick}>Zurück zum Meeting</Button>
             </Toolbar>
           </AppBar>
         </Box>

@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid2'
 import Box from '@mui/material/Box'
 import AppBar from '@mui/material/AppBar'
@@ -34,8 +35,8 @@ export default function CMainView() {
               <Typography variant="h6" sx={{ flexGrow: 1 }}>
                 Meeting Name, Datum, etc.
               </Typography>
-              <button onClick={handleEndClick}>Meeting beenden</button>
-              <button onClick={handleBackClick}>Züruck</button>
+              <Button variant='outlined' color='error' onClick={handleEndClick}>Meeting beenden</Button>
+              <Button variant='outlined' color='error' onClick={handleBackClick}>Züruck</Button>
             </Toolbar>
           </AppBar>
         </Box>
@@ -54,8 +55,8 @@ export default function CMainView() {
                         borderRadius: '8px',
                         textAlign: 'center',
                         p: 2,
-                        height: '95%',
-                        width: '90%',
+                        height: '90%',
+                        width: '75%',
                         flex: 1,
                         boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
                         display: 'flex',

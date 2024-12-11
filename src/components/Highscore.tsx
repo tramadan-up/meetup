@@ -17,7 +17,10 @@ export default function Highscore() {
   useEffect(() => {
     const storedParticipants = sessionStorage.getItem(PARTICIPANT_LIST_KEY);
     if (storedParticipants) {
-      setParticipants(JSON.parse(storedParticipants));
+      const parsedParticipants = JSON.parse(storedParticipants);
+      // Sort participants by score in descending order
+      parsedParticipants.sort((a: Participant, b: Participant) => b.score - a.score);
+      setParticipants(parsedParticipants);
     }
   }, []);
 

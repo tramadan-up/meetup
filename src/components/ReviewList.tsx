@@ -69,7 +69,12 @@ export default function ReviewList() {
   return (
     <Box sx={{ padding: 2 }}>
       <Typography variant="h4" gutterBottom>
-        Teilnehmerbewertungen (Durchschnitt: {averageScore.toFixed(1)} / 5)
+        Teilnehmerbewertungen {[...Array(5)].map((_, index) => (
+                  <StarIcon
+                    key={index}
+                    color={index < averageScore ? 'primary' : 'disabled'}
+                  />
+                ))}
       </Typography>
       <Box
         sx={{
@@ -106,16 +111,6 @@ export default function ReviewList() {
               >
                 {review.comment}
               </Typography>
-                
-              <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end', gap: 0.5 }}>
-                {[...Array(5)].map((_, index) => (
-                  <StarIcon
-                    key={index}
-                    color={index < review.score ? 'primary' : 'disabled'}
-                  />
-                ))}
-                <Typography variant="body2">{review.score}/5</Typography>
-              </Box>
             </Box>
           );
         })}

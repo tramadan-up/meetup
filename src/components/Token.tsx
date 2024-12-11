@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
@@ -6,6 +7,7 @@ import Tooltip from '@mui/material/Tooltip';
 import ChatIcon from '@mui/icons-material/Chat';
 import TimerIcon from '@mui/icons-material/Timer';
 import WarningIcon from '@mui/icons-material/Warning';
+import { Typography } from '@mui/material';
 
 type TokenProps = {
     type: 'speaking' | 'punishment' | 'time';
@@ -32,6 +34,10 @@ export default function Token({ type, size }: TokenProps) {
         }
     };
 
+    const handleSimulatePunishment = () => {
+        setTokenCount((prevCount) => prevCount + 1);
+    };
+
     const getTokenIcon = () => {
         switch (type) {
             case 'speaking':
@@ -46,9 +52,10 @@ export default function Token({ type, size }: TokenProps) {
     };
 
     return (
+        <Box>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             {size === 'small' ? (
-                <Tooltip title={`${type.charAt(0).toUpperCase() + type.slice(1)} Tokens`}>
+                <Tooltip title={`${type.charAt(0).toUpperCase() + type.slice(1)} Token`}>
                     <Badge badgeContent={tokenCount} color="primary" showZero overlap="circular">
                         <IconButton
                             color={type === 'punishment' ? 'error' : 'primary'}
@@ -64,7 +71,6 @@ export default function Token({ type, size }: TokenProps) {
                     <Tooltip key={index} title={`${type.charAt(0).toUpperCase() + type.slice(1)} Token`}>
                         <IconButton
                             color={type === 'punishment' ? 'error' : 'primary'}
-                            disabled={type === 'punishment'}
                             sx={{ opacity: tokenCount > index ? 1 : 0.5 }}
                             onClick={() => {
                                 if (type !== 'punishment') {
@@ -77,6 +83,17 @@ export default function Token({ type, size }: TokenProps) {
                     </Tooltip>
                 ))
             )}
+            
+        </Box>
+        <Box>
+            {type === 'punishment' && size != 'small' ? (
+                <Button 
+                    variant='outlined' 
+                    color='error'
+                    onClick={handleSimulatePunishment}>
+                Strafe simulieren
+            </Button>):(<Typography></Typography>)}
+        </Box>
         </Box>
     );
 }

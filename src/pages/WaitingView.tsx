@@ -97,13 +97,15 @@ export default function WaitingView() {
                 {isSubmitted && (
                   <Box sx={{ marginTop: 3, display: 'flex', gap: 2 }}>
                     <Button 
-                      variant="contained"
+                      variant="outlined"
+                      color='error'
                       onClick={handleStartClick}
                     >
                       Meeting starten
                     </Button>
                     <Button 
-                      variant="contained"
+                      variant="outlined"
+                      color='error'
                       onClick={handleBackClick}
                     >
                       Zurück zum Login

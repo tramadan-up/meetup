@@ -13,16 +13,16 @@ export default function PdfUploader() {
         if (file && file.type === "application/pdf") {
             setFileName(file.name);
         } else if (file) {
-            alert("Please select a PDF file.");
+            alert("Bitte PDF Datei auswählen.");
         }
     };
 
     const handlePreview = () => {
-        alert("This would preview the PDF.");
+        alert("PDF Vorschau ist nicht implementiert.");
     };
 
     const handleUpload = () => {
-        alert("This would upload the PDF.");
+        alert("PDF Upload ist nicht implementiert.");
     };
 
     return (
