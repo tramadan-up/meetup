@@ -14,11 +14,6 @@ export default function IntroTextDisplay() {
                 <Typography variant="h4" textAlign="center">Meeting App Prototyp</Typography>
                 <Typography variant="h6">Rote Buttons dienen ausschließlich zum Navigieren und sind nicht Teil der App.</Typography>
                 <Typography variant="h6">Erklärung/zusätzlicher Text</Typography>
-                <Typography/>
-                <Typography/>
-                <Typography/>
-                <Typography/>
-                <Typography/>
                 <Typography variant="h4">Code</Typography>
                 <Typography variant="h6">Koordinator: 111</Typography>
                 <Typography variant="h6">Teilnehmer: 666</Typography>
