@@ -14,6 +14,34 @@ export default function CReviewView() {
     navigate('/coordinator/main');
   };
   return (
+    <Box sx={{
+      flex:1,
+      paddingLeft: '5vw',
+      paddingRight: '5vw',
+      paddingTop: '1vh'
+    }}>
+      <Grid container spacing={3} flexWrap="wrap">
+        <Grid size={{xs:12, sm:12, md:12, lg:12}}>
+          <AppBar position="static" sx={{ bgcolor: 'white', borderRadius: '8px', textAlign: 'center', color: 'black' }}>
+            <Toolbar>
+              <Typography variant="h6" sx={{ flexGrow: 1 }}>
+                Meeting Name, Datum, etc.
+              </Typography>
+              <Button variant='outlined' color='error' onClick={handleBackClick}>Zurück zum Meeting</Button>
+            </Toolbar>
+          </AppBar>
+        </Grid>
+          <Grid size={{xs:12, sm:12, md:8, lg:8}}>
+            <ReviewList/>
+          </Grid>
+          <Grid size={{xs:12, sm:12, md:4, lg:4}}>
+            <Highscore/>
+          </Grid>
+
+      </Grid>
+    </Box>
+
+    /** 
     <Box sx={{ flex: 1, paddingLeft: '5vw', paddingRight: '5vw', paddingTop: '1vh' }}>
       <Grid minHeight="5vh">
         <Box sx={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
@@ -47,5 +75,6 @@ export default function CReviewView() {
         </Grid>
       </Box >
     </Box >
+    */
   );
 }

@@ -60,7 +60,6 @@ export default function SortableItem({
             sx={{
                 display: 'flex',
                 alignItems: 'center',
-                width: 380,
                 gap: 1,
                 padding: 1,
                 border: '1px solid',
@@ -86,7 +85,7 @@ export default function SortableItem({
                 variant="outlined"
                 fullWidth
                 size="small"
-                sx={{ flex: 2, width: 180 }}
+                sx={{ flex: 2,}}
             />
             {!isNew && entry.value !== undefined && (
                 <TextField

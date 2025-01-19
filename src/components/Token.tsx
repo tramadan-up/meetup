@@ -53,47 +53,47 @@ export default function Token({ type, size }: TokenProps) {
 
     return (
         <Box>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            {size === 'small' ? (
-                <Tooltip title={`${type.charAt(0).toUpperCase() + type.slice(1)} Token`}>
-                    <Badge badgeContent={tokenCount} color="primary" showZero overlap="circular">
-                        <IconButton
-                            color={type === 'punishment' ? 'error' : 'primary'}
-                            onClick={type === 'punishment' ? undefined : handleTokenClick}
-                            disabled={type === 'punishment'}
-                        >
-                            {getTokenIcon()}
-                        </IconButton>
-                    </Badge>
-                </Tooltip>
-            ) : (
-                Array.from({ length: 4 }).map((_, index) => (
-                    <Tooltip key={index} title={`${type.charAt(0).toUpperCase() + type.slice(1)} Token`}>
-                        <IconButton
-                            color={type === 'punishment' ? 'error' : 'primary'}
-                            sx={{ opacity: tokenCount > index ? 1 : 0.5 }}
-                            onClick={() => {
-                                if (type !== 'punishment') {
-                                    setTokenCount((prevCount) => (prevCount > index ? prevCount - 1 : prevCount));
-                                }
-                            }}
-                        >
-                            {getTokenIcon()}
-                        </IconButton>
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}>
+                {size === 'small' ? (
+                    <Tooltip title={`${type.charAt(0).toUpperCase() + type.slice(1)} Token`}>
+                        <Badge badgeContent={tokenCount} color="primary" showZero overlap="circular">
+                            <IconButton
+                                color={type === 'punishment' ? 'error' : 'primary'}
+                                onClick={type === 'punishment' ? undefined : handleTokenClick}
+                                disabled={type === 'punishment'}
+                            >
+                                {getTokenIcon()}
+                            </IconButton>
+                        </Badge>
                     </Tooltip>
-                ))
-            )}
-            
-        </Box>
-        <Box>
-            {type === 'punishment' && size != 'small' ? (
-                <Button 
-                    variant='outlined' 
-                    color='error'
-                    onClick={handleSimulatePunishment}>
-                Strafe simulieren
-            </Button>):(<Typography></Typography>)}
-        </Box>
+                ) : (
+                    Array.from({ length: 4 }).map((_, index) => (
+                        <Tooltip key={index} title={`${type.charAt(0).toUpperCase() + type.slice(1)} Token`}>
+                            <IconButton
+                                color={type === 'punishment' ? 'error' : 'primary'}
+                                sx={{ opacity: tokenCount > index ? 1 : 0.5 }}
+                                onClick={() => {
+                                    if (type !== 'punishment') {
+                                        setTokenCount((prevCount) => (prevCount > index ? prevCount - 1 : prevCount));
+                                    }
+                                }}
+                            >
+                                {getTokenIcon()}
+                            </IconButton>
+                        </Tooltip>
+                    ))
+                )}
+                
+            </Box>
+            <Box>
+                {type === 'punishment' && size != 'small' ? (
+                    <Button 
+                        variant='outlined' 
+                        color='error'
+                        onClick={handleSimulatePunishment}>
+                    Strafe simulieren
+                </Button>):(<Typography></Typography>)}
+            </Box>
         </Box>
     );
 }

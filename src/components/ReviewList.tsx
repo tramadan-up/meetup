@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid2';
 import Typography from '@mui/material/Typography';
 import StarIcon from '@mui/icons-material/Star';
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
+
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 
 type Participant = {
   id: string;
@@ -67,6 +72,69 @@ export default function ReviewList() {
   };
 
   return (
+    <Box sx={{
+      border: '1px solid grey',
+      borderRadius: '8px',
+      boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingLeft: '5vw',
+      paddingRight: '5vw',
+      paddingTop: '1vh',
+      height:'100%'
+    }}>
+      <Grid container direction="column">
+        <Grid>
+          <ThemeProvider theme={theme}>
+            <Typography variant="h4" gutterBottom>
+              Teilnehmerbewertungen {[...Array(5)].map((_, index) => (
+                <StarIcon
+                  key={index}
+                  color={index < averageScore ? 'primary' : 'disabled'}
+                />
+              ))}
+            </Typography>
+          </ThemeProvider>
+        </Grid>
+        <Grid>
+          {reviews.map((review) => {
+            const participant = participants.find((p) => p.id === review.participantId);
+            return (
+              <Box
+                key={review.participantId}
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-evenly',
+                  alignItems: 'center',
+                  padding: 2,
+                  borderBottom: '1px solid',
+                  borderColor: 'divider',
+                  ':last-child': { borderBottom: 'none' },
+                }}
+              >
+                <ThemeProvider theme={theme}>
+                  <Typography variant="h5" sx={{ flex: 1 }}>
+                    {participant?.name || 'Unbekannter Teilnehmer'}
+                  </Typography>
+                </ThemeProvider>
+                <ThemeProvider theme={theme}>
+                  <Typography
+                    variant="body2"
+                    sx={{ flex: 3, textAlign: 'center', marginX: 2 }}
+                  >
+                    {review.comment}
+                  </Typography>
+                </ThemeProvider>
+              </Box>
+            );
+          })}
+        </Grid>
+      </Grid>
+    </Box>
+
+
+    /** 
     <Box sx={{ padding: 2 }}>
       <Typography variant="h4" gutterBottom>
         Teilnehmerbewertungen {[...Array(5)].map((_, index) => (
@@ -116,5 +184,6 @@ export default function ReviewList() {
         })}
       </Box>
     </Box>
+    */
   );
 }

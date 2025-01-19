@@ -5,6 +5,10 @@ import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
+
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 
 export default function LoginForm() {
     const [name, setName] = useState('');
@@ -25,6 +29,42 @@ export default function LoginForm() {
     };
 
     return (
+        <Box sx={{
+            border: '1px solid grey',
+            borderRadius: '8px',
+            boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+            textAlign: 'center',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+        }}>
+            <Stack direction="column" spacing={2} sx={{ height: '90%', width: '50%', paddingTop: '2vh', paddingBottom: '2vh' }}>
+                <ThemeProvider theme={theme}>
+                <Typography variant="h4">Willkommen!</Typography>
+                </ThemeProvider>
+                <TextField
+                    label="Name"
+                    variant="filled"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+                <TextField
+                    label="Code"
+                    variant="filled"
+                    value={code}
+                    onChange={(e) => setCode(e.target.value)}
+                    onKeyDown={(e) => { if (e.key === 'Enter') { handleLogin(); } }}
+                />
+                <Button
+                    variant="contained"
+                    onClick={handleLogin}
+                >
+                    Start
+                </Button>
+            </Stack>
+        </Box>
+
+        /**
         <Box sx={{ border: '1px solid grey', borderRadius: '8px', textAlign: 'center', p: 2, height: '75%', width: '75%', flex: 1, boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <Stack direction="column" spacing={2} sx={{ height: '50%', width: '50%' }}>
                 <Typography variant="h4">Hallo!</Typography>
@@ -49,6 +89,7 @@ export default function LoginForm() {
                 </Button>
             </Stack>
         </Box>
+        */
     );
 }
 

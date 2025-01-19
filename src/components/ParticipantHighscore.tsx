@@ -60,8 +60,7 @@ export default function ParticipantHighscore() {
         padding: 4,
         border: '2px',
         borderRadius: 3,
-        maxWidth: '90%',
-        height: '90%',
+        height:'100%',
         margin: '0 auto',
         backgroundColor: '#f9f9f9',
         boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import Stack from '@mui/material/Stack'
 import Grid from '@mui/material/Grid2'
 import TextField from '@mui/material/TextField'
 import { DndContext, closestCenter } from '@dnd-kit/core'
@@ -12,7 +11,10 @@ import TokenForm from './TokenForm'
 import PdfUploader from './PdfUploader'
 import MeetingTime from './MeetingTime'
 import Button from '@mui/material/Button'
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 
 type Entry = {
     id: string;
@@ -170,6 +172,102 @@ export default function CreationForm() {
     };
 
     return (
+
+        <Box sx={{
+            border: '1px solid grey',
+            borderRadius: '8px',
+            boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+            paddingTop: '1vh',
+            paddingBottom: '1vh',
+        }}>
+            <Grid container spacing={5} flexWrap="wrap" display="flex" justifyContent="center" alignItems="center">
+                <Grid size={{xs:12, md:4, lg:6}} textAlign="center">
+                    <ThemeProvider theme={theme}>
+                        <Typography variant="h5">Willkommen, {name}!</Typography>
+                    </ThemeProvider>
+                    <Box sx={{ml:2, mr:2}}>
+                        <TextField
+                            label="Meeting Name"
+                            value={meetingName}
+                            onChange={handleMeetingNameChange}
+                            variant="outlined"
+                            fullWidth
+                            sx={{ maxWidth: 400 }}
+                        />
+                    </Box>
+                </Grid>
+                <Grid container spacing={6} flexWrap="wrap" display="flex" justifyContent="center" alignItems="center" textAlign="center">
+                    <Grid container spacing={1} size={{xs:12, md:8, lg:7}} direction="column" display="flex" justifyContent="center">
+                        <Box sx={{ml:2, mr:2}}>
+                            <MeetingTime entries={entries} onAutoClick={onAutoClick} showValues={showValues} />
+                        </Box>
+                        <ThemeProvider theme={theme}>
+                            <Typography variant="h6">Einteilung des Meetings</Typography>
+                        </ThemeProvider>
+                        <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+                            <SortableContext items={entries} strategy={verticalListSortingStrategy}>
+                                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mt: 1, ml:2, mr:2 }}>
+                                    {entries.map((entry) => (
+                                        <SortableItem
+                                            key={`${entry.id}-${entries.length}`}
+                                            entry={showValues ? entry : { id: entry.id, name: entry.name }}
+                                            onNameChange={changeEntryName}
+                                            onValueChange={changeEntryValue}
+                                            onRemove={() => removeEntry(entry.id)}
+                                            isRemoveDisabled={entries.length <= MIN_ENTRIES}
+                                        />
+                                    ))}
+
+                                    {entries.length < MAX_ENTRIES && (
+                                        <SortableItem
+                                            entry={{ id: '', name: '', value: 15 }}
+                                            isNew
+                                            onSave={saveNewEntry}
+                                        />
+                                    )}
+                                </Box>
+                            </SortableContext>
+                        </DndContext>
+                        <Box textAlign='center'>
+                            <Button variant="contained" onClick={toggleShowValues} sx={{width: '25%'}}>
+                                {showValues ? 'Smart' : 'Basic'}
+                            </Button>
+                        </Box>
+                        
+                    </Grid>
+                    <Grid size={{xs:12, md:6, lg:5}}>
+                        <Box sx={{ml:2, mr:2}}>
+                            <ThemeProvider theme={theme}>
+                                <Typography variant="h6">Anzahl der Token</Typography>
+                            </ThemeProvider>
+                            <TokenForm
+                                speakingTokens={speakingTokens}
+                                timerTokens={timerTokens}
+                                onTokenChange={(newSpeakingTokens, newTimerTokens) => {
+                                    setSpeakingTokens(newSpeakingTokens);
+                                    setTimerTokens(newTimerTokens);
+                                }}
+                            />
+                        </Box>
+                        <Box sx={{ml:2, mr:2}}>
+                            <ThemeProvider theme={theme}>
+                                <Typography variant="h6">PDF Upload</Typography>
+                            </ThemeProvider>
+                            <PdfUploader />
+                        </Box>
+                    </Grid>
+                </Grid>
+                <Grid>
+                    <Box sx={{ml:2, mr:2, textAlign:'center'}}>
+                        <Button variant='contained' color='primary' onClick={handleCreationClick} sx={{width: '45%'}}>Meeting starten</Button>
+                        <Button variant='outlined' color='error' onClick={handleBackClick} sx={{width: '45%'}}>Zurück zum Login</Button>
+                    </Box>
+                </Grid>
+            </Grid>
+        </Box>
+
+
+        /** 
         <Box sx={{
                 border: '1px solid grey',
                 borderRadius: '8px',
@@ -279,5 +377,6 @@ export default function CreationForm() {
                 </Grid>
             </Stack>
         </Box>
+        */
     );
 }

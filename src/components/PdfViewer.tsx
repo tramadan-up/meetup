@@ -7,6 +7,10 @@ import Tooltip from '@mui/material/Tooltip';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
+
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 
 type PdfViewerProps = {
     isCoordinator?: boolean;
@@ -46,6 +50,79 @@ export default function PdfViewer({ isCoordinator = false }: PdfViewerProps) {
 
 
     return (
+        <Box sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            padding: 2,
+            border: '1px solid grey',
+            borderRadius: 2,
+        }}>
+            <ThemeProvider theme={theme}>
+                <Typography variant="h4" sx={{ marginBottom: 2 }}>
+                Slide {currentSlide + 1} / {TOTAL_SLIDES}
+                </Typography>
+            </ThemeProvider>
+            
+            <Box sx={{
+                    width: '100%',
+                    height: isCoordinator ? '63vh' : '63vh',
+                    backgroundColor: 'lightgray',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderRadius: 1,
+                    marginBottom: 2,
+                }}>
+                    <ThemeProvider theme={theme}>
+                        <Typography variant="h4" color="text.secondary">
+                            Slide {currentSlide + 1}
+                        </Typography>
+                    </ThemeProvider>
+                
+            </Box>
+            {isCoordinator ? (
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+                    <Tooltip title="Previous Slide">
+                        <IconButton
+                            onClick={handlePreviousSlide}
+                            aria-label="Previous Slide"
+                            disabled={currentSlide === 0}
+                        >
+                            <ArrowBackIcon sx={{ fontSize: '50px' }} />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="To Slide View">
+                        <IconButton onClick={isCoordinator ? handleCSlideClick : handleSlideClick} aria-label="Expand">
+                            <FullscreenIcon sx={{ fontSize: '50px' }} />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Next Slide">
+                        <IconButton
+                            onClick={handleNextSlide}
+                            aria-label="Next Slide"
+                            disabled={currentSlide === TOTAL_SLIDES - 1}
+                        >
+                            <ArrowForwardIcon sx={{ fontSize: '50px' }} />
+                        </IconButton>
+                    </Tooltip>
+                </Box>
+            ) : (
+                <Box sx={{ position: 'relative' }}>
+                    <Tooltip title="To Slide View">
+                        <IconButton onClick={isCoordinator ? handleCSlideClick : handleSlideClick} aria-label="Expand" sx={{
+                            position: 'absolute',
+                            bottom: 5,
+                            left: 350,
+                        }}
+                        >
+                            <FullscreenIcon sx={{ fontSize: '50px' }} />
+                        </IconButton>
+                    </Tooltip>
+                </Box>
+            )}
+        </Box>
+        /** 
         <Box
             sx={{
                 display: 'flex',
@@ -119,6 +196,7 @@ export default function PdfViewer({ isCoordinator = false }: PdfViewerProps) {
                 </Box>
             )}
         </Box>
+        */
     );
 }
 

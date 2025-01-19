@@ -10,7 +10,10 @@ import TimerIcon from '@mui/icons-material/Timer';
 import WarningIcon from '@mui/icons-material/Warning';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 
 type Participant = {
     id: string;
@@ -23,6 +26,7 @@ type Participant = {
 
 type ParticipantListProps = {
     participants?: Participant[];
+    isSlideView?: boolean;
 };
 
 const PARTICIPANT_LIST_KEY = 'participantList';
@@ -30,30 +34,28 @@ const PARTICIPANT_LIST_KEY = 'participantList';
 const defaultParticipants: Participant[] = [
     { id: '1', name: 'Lukas', speakingTokens: 2, timeTokens: 1, punishmentTokens: 0, score: 250 },
     { id: '2', name: 'Max', speakingTokens: 1, timeTokens: 2, punishmentTokens: 0, score: 200 },
-    { id: '3', name: 'Felix', speakingTokens: 2, timeTokens: 1, punishmentTokens: 1, score: 200 },
+    { id: '3', name: 'Eva', speakingTokens: 2, timeTokens: 1, punishmentTokens: 1, score: 200 },
     { id: '4', name: 'Jonas', speakingTokens: 3, timeTokens: 0, punishmentTokens: 2, score: 250 },
     { id: '5', name: 'Paul', speakingTokens: 1, timeTokens: 3, punishmentTokens: 0, score: 250 },
-    { id: '6', name: 'Leon', speakingTokens: 2, timeTokens: 1, punishmentTokens: 0, score: 250 },
-    { id: '7', name: 'Finn', speakingTokens: 1, timeTokens: 2, punishmentTokens: 1, score: 150 },
-    { id: '8', name: 'Elias', speakingTokens: 2, timeTokens: 2, punishmentTokens: 0, score: 300 },
-    { id: '9', name: 'Julian', speakingTokens: 1, timeTokens: 1, punishmentTokens: 1, score: 100 },
+    { id: '6', name: 'Anna', speakingTokens: 2, timeTokens: 1, punishmentTokens: 0, score: 250 },
+    { id: '7', name: 'Natalie', speakingTokens: 1, timeTokens: 2, punishmentTokens: 1, score: 150 },
+    { id: '8', name: 'Maria', speakingTokens: 2, timeTokens: 2, punishmentTokens: 0, score: 300 },
+    { id: '9', name: 'Emma', speakingTokens: 1, timeTokens: 1, punishmentTokens: 1, score: 100 },
     { id: '10', name: 'Moritz', speakingTokens: 2, timeTokens: 0, punishmentTokens: 1, score: 150 },
 ];
 
-export default function ParticipantList({ participants }: ParticipantListProps) {
+export default function ParticipantList({ participants, isSlideView=false }: ParticipantListProps) {
     const [participantList, setParticipantList] = useState<Participant[]>(
         participants || JSON.parse(sessionStorage.getItem(PARTICIPANT_LIST_KEY) || '[]') || defaultParticipants
     );
 
     useEffect(() => {
-        // Load default participants if none are in sessionStorage
         if (!sessionStorage.getItem(PARTICIPANT_LIST_KEY)) {
             sessionStorage.setItem(PARTICIPANT_LIST_KEY, JSON.stringify(defaultParticipants));
             setParticipantList(defaultParticipants);
         }
     }, []);
 
-    // Save updated participant list to sessionStorage
     useEffect(() => {
         sessionStorage.setItem(PARTICIPANT_LIST_KEY, JSON.stringify(participantList));
     }, [participantList]);
@@ -89,6 +91,77 @@ export default function ParticipantList({ participants }: ParticipantListProps) 
     };
 
     return (
+        <Box sx={{
+            border: '1px solid grey',
+            borderRadius: '8px',
+            boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+            textAlign: 'center',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingTop: '1vh',
+            paddingBottom: '1vh',
+        }}>
+            <Grid container spacing={1} direction="column">
+                <ThemeProvider theme={theme}>
+                    <Typography variant="h4" gutterBottom>
+                        Teilnehmer
+                    </Typography>
+                </ThemeProvider>
+                
+                <Grid container spacing={3} direction="column">
+                    {participantList.map((participant) => (
+                        <Grid container spacing={3} direction="row" key={participant.id} justifyContent="space-evenly" borderRadius="8px" boxShadow="0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
+                            <Box sx={{width:'10%'}}>
+                                <ThemeProvider theme={theme}>
+                                    <Typography variant="h6">{participant.name}</Typography>
+                                </ThemeProvider>
+                            </Box>
+                            <Grid container spacing={1}>
+                                    <Badge badgeContent={participant.speakingTokens} color="success" showZero>
+                                        <ChatIcon color="success" />
+                                    </Badge>
+                                    <Badge badgeContent={participant.timeTokens} color="primary" showZero>
+                                        <TimerIcon color="primary" />
+                                    </Badge>
+                                    <Grid container spacing={0} direction="row">
+                                        <Badge badgeContent={participant.punishmentTokens} color="error" showZero>
+                                            <WarningIcon color="error" />
+                                        </Badge>
+                                        <IconButton
+                                            color="error"
+                                            size="small"
+                                            onClick={() => handleTokenChange(participant.id, 'increase')}
+                                            disabled={participant.score <= 0}
+                                            sx={{ padding: 0 }}
+                                        >
+                                            <AddIcon />
+                                        </IconButton>
+                                        <IconButton
+                                            color="success"
+                                            size="small"
+                                            onClick={() => handleTokenChange(participant.id, 'decrease')}
+                                            disabled={participant.punishmentTokens <= 0}
+                                            sx={{ padding: 0 }}
+                                        >
+                                            <RemoveIcon />
+                                        </IconButton>
+                                    </Grid>
+                            </Grid>
+                            {!isSlideView ?
+                                <Box>
+                                    <ThemeProvider theme={theme}>
+                                        <Typography variant="h6">Score: {participant.score}</Typography>
+                                    </ThemeProvider>
+                                </Box>
+                            : null}
+                            
+                        </Grid>
+                    ))}
+                </Grid>
+            </Grid>
+        </Box>
+        /** 
         <Box sx={{ padding: 2, backgroundColor: 'background.paper', borderRadius: 1, boxShadow: 1 }}>
             <Typography variant="h4" gutterBottom>
                 Teilnehmer
@@ -165,6 +238,7 @@ export default function ParticipantList({ participants }: ParticipantListProps) 
                 ))}
             </Grid>
         </Box>
+        */
     );
 }
 

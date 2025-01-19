@@ -3,12 +3,12 @@ import Grid from '@mui/material/Grid2'
 import Box from '@mui/material/Box'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
-import Stack from '@mui/material/Stack'
 import PdfViewerEx from '../components/PdfViewerEx';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import { ChevronLeft } from '@mui/icons-material';
 import TimerComponent from '../components/TimerComponent';
+import ParticipantList from '../components/ParticipantList';
 
 export default function CSlideView() {
   const navigate = useNavigate();
@@ -17,6 +17,38 @@ export default function CSlideView() {
   };
 
   return (
+    <Box sx={{
+      flex:1,
+      paddingLeft: '5vw',
+      paddingRight: '5vw',
+      paddingTop: '1vh'
+    }}>
+      <Grid container spacing={2} direction="column">
+        <Grid size={{xs:12, sm:12, md:12, lg:12}}>
+          <AppBar position="static" sx={{ bgcolor: 'white', borderRadius: '100px', textAlign: 'center', color: 'black' }}>
+            <Toolbar>
+              <TimerComponent viewType='slide'/>
+            </Toolbar>
+          </AppBar>
+        </Grid>
+        <Grid container spacing={2} direction="row">
+          <Grid size={{xs:12, sm:12, md:12, lg:10}}>
+            <PdfViewerEx isCoordinator={true} />
+          </Grid>
+          <Grid size={{xs:12, sm:12, md:12, lg:2}}>
+            <ParticipantList isSlideView={true} />
+            <Tooltip title="Back to Main View">
+              <IconButton onClick={handleBackClick} aria-label="Back to MainView">
+                <ChevronLeft sx={{ fontSize: '70px' }} />
+              </IconButton>
+            </Tooltip>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Box>
+
+
+    /**
     <Box sx={{ flex: 1, paddingLeft: '5vw', paddingRight: '5vw', paddingTop: '1vh' }}>
       <Grid minHeight="5vh">
         <Box sx={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
@@ -54,5 +86,6 @@ export default function CSlideView() {
         </Grid>
       </Box >
     </Box >
+    */
   );
 }

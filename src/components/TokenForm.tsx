@@ -44,7 +44,6 @@ export default function TokenForm({
                 value={speakingTokens}
                 onChange={handleSpeakingTokensChange}
                 variant="outlined"
-                fullWidth
             />
             <TextField
                 label="Zeittoken"
@@ -52,7 +51,6 @@ export default function TokenForm({
                 value={timerTokens}
                 onChange={handleTimerTokensChange}
                 variant="outlined"
-                fullWidth
             />
         </Box>
     );
