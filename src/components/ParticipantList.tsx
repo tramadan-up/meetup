@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid2';
-import Stack from '@mui/material/Stack'
 import Badge from '@mui/material/Badge';
 import ChatIcon from '@mui/icons-material/Chat';
 import TimerIcon from '@mui/icons-material/Timer';
