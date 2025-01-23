@@ -73,7 +73,7 @@ export default function IntroTextDisplay() {
                             border: '1px solid grey',
                             borderRadius: '8px',
                             boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', 
-                            maxHeight: '30vh', 
+                            maxHeight: '32vh', 
                             overflow:'auto'}}>
                             <List sx={{ maxHeight: '30vh', overflow:'auto'}}>
                                 <ListItem>
@@ -131,7 +131,7 @@ export default function IntroTextDisplay() {
                                 border: '1px solid grey', 
                                 borderRadius: '8px',
                                 boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', 
-                                maxHeight: '30vh', 
+                                maxHeight: '32vh', 
                                 overflow:'auto'}}>
                                 <List>
                                 <ListItem>
