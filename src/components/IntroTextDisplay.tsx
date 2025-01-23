@@ -66,7 +66,7 @@ export default function IntroTextDisplay() {
                     Zum Neustart des Meetings muss der Session Storage geleert werden, nutze hierfür den "Session Storage Löschen" Button auf der Loginseite.</Typography>
                     <Stack direction="row" spacing={2}>
                         <Typography variant="h5">Aufgaben</Typography>
-                        <Button variant='outlined' onClick={toggleUserType} sx={{width: '25%'}}>{userType ? 'Koordinator/in' : 'Teilnehmer/in'}</Button>
+                        <Button variant='outlined' onClick={toggleUserType} sx={{width: '45%'}}>{userType ? 'Koordinator/in' : 'Teilnehmer/in'}</Button>
                     </Stack>          
                     {userType ? (
                         <Box sx={{ 
@@ -75,7 +75,7 @@ export default function IntroTextDisplay() {
                             boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', 
                             maxHeight: '32vh', 
                             overflow:'auto'}}>
-                            <List sx={{ maxHeight: '30vh', overflow:'auto'}}>
+                            <List>
                                 <ListItem>
                                     <ListItemIcon>
                                         <Filter1Icon/>

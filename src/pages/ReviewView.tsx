@@ -8,6 +8,9 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import ParticipantHighscore from '../components/ParticipantHighscore';
 import FeedbackForm from '../components/FeedbackForm';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 
 const NOTES_STORAGE_KEY = 'userNotes';
 
@@ -15,14 +18,14 @@ export default function ReviewView() {
   const date = new Date();
   const formattedDate = date.toLocaleDateString()
 
-    const [note, setNote] = useState('');
+  const [note, setNote] = useState('');
 
-    useEffect(() => {
-        const storedNote = sessionStorage.getItem(NOTES_STORAGE_KEY);
-        if (storedNote) {
-            setNote(storedNote);
-        }
-    }, []);
+  useEffect(() => {
+      const storedNote = sessionStorage.getItem(NOTES_STORAGE_KEY);
+      if (storedNote) {
+          setNote(storedNote);
+      }
+  }, []);
 
   const navigate = useNavigate();
   const handleBackClick = () => {
@@ -38,6 +41,7 @@ export default function ReviewView() {
     link.click();
     URL.revokeObjectURL(url);
 };
+
   return (
     <Box sx={{
       flex:1,
@@ -52,7 +56,14 @@ export default function ReviewView() {
               <Typography variant="h6" sx={{ flexGrow: 1 }}>
                 Pausenreform - {formattedDate}
               </Typography>
-              <Button onClick={handleDownload}>Downlowad</Button>
+              <Tooltip title="Notizen herunterladen">
+                <IconButton
+                    color="primary"
+                    onClick={handleDownload}
+                    aria-label="Notizen herunterladen">
+                    <TextSnippetIcon/>
+                </IconButton>
+              </Tooltip>
               <Button variant='outlined' color='error' onClick={handleBackClick}>Zurück zum Meeting</Button>
             </Toolbar>
           </AppBar>

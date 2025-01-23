@@ -4,6 +4,10 @@ import Grid from '@mui/material/Grid2';
 import Typography from '@mui/material/Typography';
 import StarIcon from '@mui/icons-material/Star';
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
+import Stack from '@mui/material/Stack';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import DownloadIcon from '@mui/icons-material/Download';
 
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
@@ -15,6 +19,7 @@ type Participant = {
 
 type Review = {
   participantId: string;
+  name: string,
   comment: string;
   score: number;
 };
@@ -54,6 +59,7 @@ export default function ReviewList() {
 
       const defaultReviews = germanReviews.map((review, index) => ({
         participantId: String(index + 1),
+        name: review.name,
         comment: review.comment,
         score: review.score,
       }));
@@ -70,6 +76,16 @@ export default function ReviewList() {
     const avg = totalScore / reviews.length;
     setAverageScore(avg);
   };
+  const fileContent = reviews.map(review => `${review.name}: ${review.comment}`).join('\n');
+  const handleDownload = () => {
+    const blob = new Blob([fileContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'bewertungen.txt';
+    link.click();
+    URL.revokeObjectURL(url);
+};
 
   return (
     <Box sx={{
@@ -86,16 +102,26 @@ export default function ReviewList() {
     }}>
       <Grid container direction="column">
         <Grid>
-          <ThemeProvider theme={theme}>
-            <Typography variant="h4" gutterBottom>
-              Teilnehmerbewertungen {[...Array(5)].map((_, index) => (
-                <StarIcon
-                  key={index}
-                  color={index < averageScore ? 'primary' : 'disabled'}
-                />
-              ))}
-            </Typography>
-          </ThemeProvider>
+          <Stack direction="row" spacing={2}>
+            <ThemeProvider theme={theme}>
+              <Typography variant="h4" gutterBottom>
+                Teilnehmerbewertungen {[...Array(5)].map((_, index) => (
+                  <StarIcon
+                    key={index}
+                    color={index < averageScore ? 'primary' : 'disabled'}
+                  />
+                ))}
+              </Typography>
+            </ThemeProvider>
+            <Tooltip title="Bewertungen herunterladen">
+                <IconButton
+                    color="primary"
+                    onClick={handleDownload}
+                    aria-label="Bewertungen herunterladen">
+                    <DownloadIcon />
+                </IconButton>
+            </Tooltip>
+          </Stack>
         </Grid>
         <Grid>
           {reviews.map((review) => {
