@@ -38,16 +38,20 @@ export default function SlideView() {
           </Grid>
           <Grid size={{xs:1, sm:1, md:1, lg:1}} 
             sx={{
+              border: '1px solid grey', 
+              borderRadius: '8px', 
+              boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
               textAlign: 'center',
               justifyContent: 'center',
               alignItems: 'center',
-              width:'100%'
+              width:'100%',
+              paddingTop:'1vh'
           }}>
             <Token type="speaking" size="small" />
             <Token type="time" size="small" />
             <Token type="punishment" size="small" />
-            <Tooltip title="Back to Main View">
-              <IconButton onClick={handleBackClick} aria-label="Back to MainView">
+            <Tooltip title="Zurück zur Hauptansicht">
+              <IconButton onClick={handleBackClick} aria-label="Zurück zur Hauptansicht">
                 <ChevronLeft sx={{ fontSize: '70px' }} />
               </IconButton>
             </Tooltip>

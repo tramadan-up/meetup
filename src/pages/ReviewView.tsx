@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid2'
@@ -8,11 +9,35 @@ import Typography from '@mui/material/Typography'
 import ParticipantHighscore from '../components/ParticipantHighscore';
 import FeedbackForm from '../components/FeedbackForm';
 
+const NOTES_STORAGE_KEY = 'userNotes';
+
 export default function ReviewView() {
+  const date = new Date();
+  const formattedDate = date.toLocaleDateString()
+
+    const [note, setNote] = useState('');
+
+    useEffect(() => {
+        const storedNote = sessionStorage.getItem(NOTES_STORAGE_KEY);
+        if (storedNote) {
+            setNote(storedNote);
+        }
+    }, []);
+
   const navigate = useNavigate();
   const handleBackClick = () => {
     navigate('/participant/main');
   };
+
+  const handleDownload = () => {
+    const blob = new Blob([note], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'note.txt';
+    link.click();
+    URL.revokeObjectURL(url);
+};
   return (
     <Box sx={{
       flex:1,
@@ -25,8 +50,9 @@ export default function ReviewView() {
         <AppBar position="static" sx={{ bgcolor: 'white', borderRadius: '8px', textAlign: 'center', color: 'black' }}>
             <Toolbar>
               <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                Meeting Name, Datum, etc.
+                Pausenreform - {formattedDate}
               </Typography>
+              <Button onClick={handleDownload}>Downlowad</Button>
               <Button variant='outlined' color='error' onClick={handleBackClick}>Zurück zum Meeting</Button>
             </Toolbar>
           </AppBar>

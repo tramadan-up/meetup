@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid2'
@@ -14,7 +15,20 @@ import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/s
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
 
+const MEETING_NAME_STORAGE_KEY = 'meetingName';
+
 export default function CMainView() {
+  const [meetingName, setMeetingName] = useState('Meeting Name');
+  const date = new Date();
+  const formattedDate = date.toLocaleDateString()
+
+  useEffect(() => {
+    const storedMeetingName = sessionStorage.getItem(MEETING_NAME_STORAGE_KEY);
+    if (storedMeetingName) {
+        setMeetingName(storedMeetingName);
+    }
+}, []);
+
   const navigate = useNavigate();
   const handleEndClick = () => {
     navigate('/coordinator/review');
@@ -30,7 +44,7 @@ export default function CMainView() {
       paddingRight: '5vw',
       paddingTop: '1vh',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
     }}>
       <Grid container spacing={4} direction="column">
         <Grid size={{xs:12, sm:12, md:12, lg:12}}>
@@ -38,7 +52,7 @@ export default function CMainView() {
             <Toolbar>
               <ThemeProvider theme={theme}>
                 <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                  Meeting Name, Datum, etc.
+                  {meetingName} - {formattedDate}
                 </Typography>
               </ThemeProvider>
               <Button variant='outlined' color='error' onClick={handleEndClick}>Meeting beenden</Button>

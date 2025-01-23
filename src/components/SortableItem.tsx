@@ -91,7 +91,7 @@ export default function SortableItem({
                 <TextField
                     type="number"
                     value={entry.value}
-                    onChange={(e) => onValueChange && onValueChange(entry.id, parseInt(e.target.value) || 0)}
+                    onChange={(e) => onValueChange && onValueChange(entry.id, parseInt(e.target.value) || 5)}
                     variant="outlined"
                     size="small"
                     sx={{ width: 80 }}

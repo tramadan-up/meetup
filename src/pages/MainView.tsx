@@ -16,10 +16,15 @@ theme = responsiveFontSizes(theme);
 
 
 export default function MainView() {
+  const date = new Date();
+  const formattedDate = date.toLocaleDateString()
+
   const navigate = useNavigate();
+
   const handleBackClick = () => {
     navigate('/');
   };
+
   return (
     <Box sx={{
       flex:1,
@@ -27,7 +32,7 @@ export default function MainView() {
       paddingRight: '5vw',
       paddingTop: '1vh',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
     }}>
       <Grid container spacing={4} direction="column">
         <Grid size={{xs:12, sm:12, md:12, lg:12}}>
@@ -35,7 +40,7 @@ export default function MainView() {
             <Toolbar>
               <ThemeProvider theme={theme}>
                 <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                  Meeting Name, Datum, etc.
+                  Pausenreform - {formattedDate}
                 </Typography>
               </ThemeProvider>
               
@@ -44,7 +49,7 @@ export default function MainView() {
           </AppBar>
         </Grid>
         <Grid container direction="row" spacing={4}>
-          <Grid container direction="column" spacing={12} size={{xs:12, sm:12, md:6, lg:6, xl:3.5}} sx={{alignItems:'center', justifyContent:'center', height:'100%'}}>
+          <Grid container direction="column" spacing={9} size={{xs:12, sm:12, md:6, lg:6, xl:3.5}} sx={{alignItems:'center', justifyContent:'center', height:'100%'}}>
           <Grid sx={{
               border: '1px solid grey', 
               borderRadius: '8px', 
@@ -52,7 +57,11 @@ export default function MainView() {
               textAlign: 'center',
               justifyContent: 'center',
               alignItems: 'center',
-              width:'100%'
+              width:'100%',
+              paddingLeft: '1vw',
+              paddingRight: '1vw',
+              paddingTop: '1vh',
+              paddingBottom: '1vh'
               }}>
               <ThemeProvider theme={theme}>
                 <Typography variant="h4">Zeittoken</Typography>
@@ -66,7 +75,11 @@ export default function MainView() {
               textAlign: 'center',
               justifyContent: 'center',
               alignItems: 'center',
-              width:'100%'
+              width:'100%',
+              paddingLeft: '1vw',
+              paddingRight: '1vw',
+              paddingTop: '1vh',
+              paddingBottom: '1vh'
               }}>
               <ThemeProvider theme={theme}>
                 <Typography variant="h4">Redetoken</Typography>
@@ -81,6 +94,10 @@ export default function MainView() {
               justifyContent: 'center',
               alignItems: 'center',
               width:'100%',
+              paddingLeft: '1vw',
+              paddingRight: '1vw',
+              paddingTop: '1vh',
+              paddingBottom: '1vh'
               }}>
               <ThemeProvider theme={theme}>
                 <Typography variant="h4">Straftoken</Typography>
@@ -90,7 +107,7 @@ export default function MainView() {
           </Grid>
 
 
-          <Grid container direction="column" spacing={4} size={{xs:12, sm:12, md:6, lg:6, xl:2.5}} sx={{alignItems:'center', justifyContent:'space-around', height:'100%'}}>
+          <Grid container direction="column" spacing={6} size={{xs:12, sm:12, md:6, lg:6, xl:2.5}} sx={{alignItems:'center', justifyContent:'center', height:'100%'}}>
             <Grid sx={{width:'100%'}}>
               <TimerComponent userType={true} viewType='main'/>
             </Grid>
@@ -100,11 +117,10 @@ export default function MainView() {
           </Grid>
 
 
-          <Grid container direction="column" spacing={4} size={{xs:12, sm:12, md:12, lg:12, xl:6}} sx={{justifyContent:'space-around', height:'100%'}}>
-            <Grid>
+          <Grid container direction="column" spacing={4} size={{xs:12, sm:12, md:12, lg:12, xl:6}} sx={{ justifyContent:'center', height:'100%'}}>
+            <Grid sx={{height:'100%'}}>
               <PdfViewer />
             </Grid>
-            
           </Grid>
         </Grid>
       </Grid>

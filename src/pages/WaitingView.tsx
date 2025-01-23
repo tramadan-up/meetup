@@ -7,10 +7,10 @@ import Typography from '@mui/material/Typography';
 import RankableItemList from '../components/RankableItemList';
 
 const defaultEntries = [
-  { id: '1', name: 'Organisation', value: 0 },
-  { id: '2', name: 'Agenda 1', value: 0 },
-  { id: '3', name: 'Präsentation', value: 0 },
-  { id: '4', name: 'Diskussion', value: 0 },
+  { id: '1', name: 'Thema 1', value: 0 },
+  { id: '2', name: 'Thema 2', value: 0 },
+  { id: '3', name: 'Thema 3', value: 0 },
+  { id: '4', name: 'Thema 4', value: 0 },
 ];
 
 export default function WaitingView() {
