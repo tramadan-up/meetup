@@ -36,12 +36,15 @@ export default function CSlideView() {
             <PdfViewerEx isCoordinator={true} />
           </Grid>
           <Grid size={{xs:12, sm:12, md:12, lg:2}}>
+            
+            <Box sx={{justifyContent:'center', paddingLeft:10}}>
+              <Tooltip title="Zurück zur Hauptansicht">
+                <IconButton onClick={handleBackClick} aria-label="Zurück zur Hauptansicht">
+                  <ChevronLeft color='primary' sx={{ fontSize: '90px' }} />
+                </IconButton>
+              </Tooltip>
+            </Box>
             <ParticipantList isSlideView={true} />
-            <Tooltip title="Back to Main View">
-              <IconButton onClick={handleBackClick} aria-label="Back to MainView">
-                <ChevronLeft sx={{ fontSize: '70px' }} />
-              </IconButton>
-            </Tooltip>
           </Grid>
         </Grid>
       </Grid>
