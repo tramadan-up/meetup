@@ -25,6 +25,7 @@ export default function PunishmentToken({ size }: PunishmentTokenProps) {
 
     const handleSimulatePunishment = () => {
         setPunishmentTokenCount((prevCount) => prevCount + 1);
+        alert("Du hast ein Straftoken erhalten. Begründung: [...] [Diese Funktion ist nicht vollständig implementiert]");
     };
 
 

@@ -12,6 +12,9 @@ import TimerComponent from '../components/TimerComponent';
 import TimeToken from '../components/TimeToken';
 import SpeakingToken from '../components/SpeakingToken';
 import PunishmentToken from '../components/PunishmentToken';
+import Tooltip from '@mui/material/Tooltip';
+import Badge from '@mui/material/Badge';
+import InfoIcon from '@mui/icons-material/Info';
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 
 let theme = createTheme();
@@ -116,7 +119,7 @@ export default function MainView() {
               paddingBottom: '1vh'
               }}>
               <ThemeProvider theme={theme}>
-                <Typography variant="h4">Zeittoken: {timeTokenCount}</Typography>
+                <Typography variant="h4">Zeittoken: {timeTokenCount} <Tooltip title="Ein Zeittoken verlängert den Timer eines Themas um eine vorgegebene Zeit. [Diese Funktion ist nicht vollständig implementiert.]"><Badge><InfoIcon color='primary' /></Badge></Tooltip></Typography>
               </ThemeProvider>
               <TimeToken size="big" />
             </Grid>
@@ -134,7 +137,7 @@ export default function MainView() {
               paddingBottom: '1vh'
               }}>
               <ThemeProvider theme={theme}>
-                <Typography variant="h4">Redetoken: {speakingTokenCount}</Typography>
+                <Typography variant="h4">Redetoken: {speakingTokenCount} <Tooltip title="Ein Redetoken singalisiert dem/der Koordinator/in, dass du zur Diskussion beitragen möchtest."><Badge><InfoIcon color='primary' /></Badge></Tooltip></Typography>
               </ThemeProvider>
               <SpeakingToken size="big" />
             </Grid>
@@ -152,7 +155,7 @@ export default function MainView() {
               paddingBottom: '1vh'
               }}>
               <ThemeProvider theme={theme}>
-                <Typography variant="h4">Straftoken: {punishmentTokenCount}</Typography>
+                <Typography variant="h4">Straftoken: {punishmentTokenCount} <Tooltip title="Ein Straftoken wird von dem/der Koordinator/in für unangebrachtes Verhalten vergeben."><Badge><InfoIcon color='primary' /></Badge></Tooltip></Typography>
               </ThemeProvider>
               <PunishmentToken size="big" />
             </Grid>

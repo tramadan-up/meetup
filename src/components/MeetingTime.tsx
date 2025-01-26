@@ -62,7 +62,7 @@ export default function MeetingTime({ entries, onAutoClick, showValues }: Meetin
                                 Gesamtzeit: {totalTime} Minuten
                             </Typography>
                         </ThemeProvider>
-                        <Tooltip title="Auto">
+                        <Tooltip title="Zurücksetzen: setzt die Gesamtzeit auf 60 Minuten.">
                             <IconButton color="primary" aria-label="Auto" onClick={onAutoClick}>
                                 <AutorenewIcon />
                             </IconButton>

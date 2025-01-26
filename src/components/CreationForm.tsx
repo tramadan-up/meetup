@@ -11,6 +11,7 @@ import TokenForm from './TokenForm'
 import PdfUploader from './PdfUploader'
 import MeetingTime from './MeetingTime'
 import Button from '@mui/material/Button'
+import Tooltip from '@mui/material/Tooltip'
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 
 let theme = createTheme();
@@ -32,7 +33,7 @@ const SHOW_VALUES_KEY = 'showValues';
 
 export default function CreationForm() {
     const [name, setName] = useState('');
-    const [meetingName, setMeetingName] = useState('Meeting Name');
+    const [meetingName, setMeetingName] = useState('Team meeting');
     const [entries, setEntries] = useState<Entry[]>([]);
     const [speakingTokens, setSpeakingTokens] = useState<number>(
         parseInt(sessionStorage.getItem(SPEAKING_TOKENS_KEY) || '3', 10)
@@ -94,10 +95,10 @@ export default function CreationForm() {
 
     const setDefaultEntries = () => {
         const defaultEntries: Entry[] = [
-            { id: '1', name: 'Organisation', value: 15 },
-            { id: '2', name: 'Agenda 1', value: 15 },
-            { id: '3', name: 'Präsentation', value: 15 },
-            { id: '4', name: 'Diskussion', value: 15 },
+            { id: '1', name: 'Thema 1', value: 15 },
+            { id: '2', name: 'Thema 2', value: 15 },
+            { id: '3', name: 'Thema 3', value: 15 },
+            { id: '4', name: 'Thema 4', value: 15 },
         ];
         setEntries(defaultEntries);
         sessionStorage.setItem(ENTRIES_STORAGE_KEY, JSON.stringify(defaultEntries));
@@ -166,7 +167,25 @@ export default function CreationForm() {
             });
             setEntries(updatedEntries);
         }
+        else if (entries.length === 4) {
+            const updatedEntries = entries.map((entry, index) => {
+                switch (index) {
+                    case 0:
+                        return { ...entry, value: 15 };
+                    case 1:
+                        return { ...entry, value: 15 };
+                    case 2:
+                        return { ...entry, value: 15 };
+                    case 3:
+                        return { ...entry, value: 15 };
+                    default:
+                        return entry;
+                }
+            });
+            setEntries(updatedEntries);
+        }
     };
+    
     const toggleShowValues = () => {
         setShowValues((prev: boolean) => !prev);
     };
@@ -229,9 +248,11 @@ export default function CreationForm() {
                             </SortableContext>
                         </DndContext>
                         <Box textAlign='center'>
-                            <Button variant="contained" onClick={toggleShowValues} sx={{width: '25%'}}>
-                                {showValues ? 'Smart' : 'Basic'}
-                            </Button>
+                            <Tooltip sx={{fontSize:'15px'}} title={showValues ? "Auto-Funktion: überlasse die Berechnungen unserer App. [Diese Funktion ist nicht vollständig implementiert.]" : "Manuell: für volle Kontrolle."}>
+                                <Button variant="contained" onClick={toggleShowValues} sx={{width: '25%'}}>
+                                    {showValues ? 'Auto' : 'Manuell'}
+                                </Button>
+                            </Tooltip>
                         </Box>
                         
                     </Grid>
@@ -249,7 +270,7 @@ export default function CreationForm() {
                                 }}
                             />
                         </Box>
-                        <Box sx={{ml:2, mr:2}}>
+                        <Box sx={{ml:2, mr:2, paddingTop:2}}>
                             <ThemeProvider theme={theme}>
                                 <Typography variant="h6">PDF Upload</Typography>
                             </ThemeProvider>

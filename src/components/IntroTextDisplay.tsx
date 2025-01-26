@@ -181,7 +181,7 @@ export default function IntroTextDisplay() {
                         )}
                 </ThemeProvider>
                 <Button variant='outlined' color='error' onClick={handleClearSessionStorage} sx={{width: '25%'}}>
-                    Session storage löschen
+                    Prototyp zurücksetzen
                 </Button>
             </Stack>
         </Box>

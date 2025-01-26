@@ -4,6 +4,9 @@ import Grid from '@mui/material/Grid2';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
+import Badge from '@mui/material/Badge';
+import InfoIcon from '@mui/icons-material/Info';
 import RankableItemList from '../components/RankableItemList';
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 
@@ -64,7 +67,7 @@ export default function WaitingView() {
           <Grid size={{xs:12, sm:12, md:12, lg:12}}>
             <ThemeProvider theme={theme}>
               <Typography variant="h5" gutterBottom>
-                Ranking der einzelnen Themen
+                Ranking der einzelnen Themen <Tooltip title="Teile dem/der Koordinator/in mit welche Themen deiner Meinung nach im Mittelpunkt stehen sollten. [Diese Funktion ist noch nicht vollständig implementiert.]"><Badge><InfoIcon color='primary' /></Badge></Tooltip>
               </Typography>
             </ThemeProvider>
           </Grid>
@@ -72,12 +75,12 @@ export default function WaitingView() {
             <RankableItemList entries={defaultEntries} />
           </Grid>
           <Grid size={{xs:12, sm:12, md:12, lg:12}}>
-            <Button 
-              variant="contained"
-              onClick={handleSubmitRanking}
-            >
-              Ranking abgeben
-            </Button>
+              <Button 
+                variant="contained"
+                onClick={handleSubmitRanking}
+              >
+                Ranking abgeben
+              </Button>
             <Button 
               variant="outlined"
               color='error'

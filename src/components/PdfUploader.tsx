@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import PreviewIcon from '@mui/icons-material/Preview';
+import Tooltip from '@mui/material/Tooltip';
 
 export default function PdfUploader() {
     const [fileName, setFileName] = useState<string | null>(null);
@@ -39,19 +40,21 @@ export default function PdfUploader() {
                 boxShadow: 1,
             }}
         >
-            <Button
-                variant="outlined"
-                component="label"
-                startIcon={<UploadFileIcon />}
-            >
-                PDF Datei auswählen
-                <input
-                    type="file"
-                    accept=".pdf"
-                    hidden
-                    onChange={handleFileChange}
-                />
-            </Button>
+            <Tooltip title="Der PDF Upload ist nicht vollständig implementiert. Eine Datei kann ausgewählt werden, aber nicht angezeigt oder hochgeladen werden.">
+                <Button
+                    variant="outlined"
+                    component="label"
+                    startIcon={<UploadFileIcon />}
+                >
+                    PDF Datei auswählen
+                    <input
+                        type="file"
+                        accept=".pdf"
+                        hidden
+                        onChange={handleFileChange}
+                    />
+                </Button>
+            </Tooltip>
 
             {fileName && (
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
