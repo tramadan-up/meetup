@@ -18,11 +18,11 @@ export default function PdfUploader() {
     };
 
     const handlePreview = () => {
-        alert("PDF Vorschau ist nicht implementiert.");
+        alert("Die PDF Vorschau ist in diesem Prototyp nicht implementiert.");
     };
 
     const handleUpload = () => {
-        alert("PDF Upload ist nicht implementiert.");
+        alert("Der PDF Upload ist in diesem Prototyp nicht implementiert.");
     };
 
     return (

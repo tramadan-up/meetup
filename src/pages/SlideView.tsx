@@ -5,7 +5,7 @@ import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import PdfViewerEx from '../components/PdfViewerEx';
 import TimeToken from '../components/TimeToken';
-import SpeakingToken from '../components/SpekingToken';
+import SpeakingToken from '../components/SpeakingToken';
 import PunishmentToken from '../components/PunishmentToken';
 import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip';

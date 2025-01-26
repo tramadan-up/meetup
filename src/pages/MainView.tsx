@@ -10,7 +10,7 @@ import PdfViewer from '../components/PdfViewer';
 import Notes from '../components/Notes';
 import TimerComponent from '../components/TimerComponent';
 import TimeToken from '../components/TimeToken';
-import SpeakingToken from '../components/SpekingToken';
+import SpeakingToken from '../components/SpeakingToken';
 import PunishmentToken from '../components/PunishmentToken';
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 
