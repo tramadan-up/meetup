@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import DownloadIcon from '@mui/icons-material/Download';
+import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 
 type NotesProps = {
     isParticipant?: boolean;
@@ -52,7 +52,7 @@ export default function Notes({ isParticipant = false }: NotesProps) {
                 onChange={(e) => setNote(e.target.value)}
                 sx={{ height: '100%' }}
             />
-            <Tooltip title="Download Notes">
+            <Tooltip title="Notizen herunterladen">
                 <IconButton
                     color="primary"
                     onClick={handleDownload}
@@ -63,7 +63,7 @@ export default function Notes({ isParticipant = false }: NotesProps) {
                         right: 8,
                     }}
                 >
-                    <DownloadIcon />
+                    <TextSnippetIcon/>
                 </IconButton>
             </Tooltip>
         </Box>

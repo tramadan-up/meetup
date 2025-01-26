@@ -31,8 +31,9 @@ function RankableItem({ entry, position }: RankableItemProps) {
       {...attributes}
       sx={{
         display: 'flex',
+        justifyContent:'center',
         alignItems: 'center',
-        width: 380,
+        textAlign:'center',
         gap: 1,
         padding: 1,
         border: '1px solid',
@@ -42,7 +43,7 @@ function RankableItem({ entry, position }: RankableItemProps) {
         overflow: 'hidden',
       }}
     >
-      <Box {...listeners} sx={{ display: 'flex', alignItems: 'center', cursor: 'grab', mr: 1 }}>
+      <Box {...listeners} sx={{ display: 'flex', alignItems: 'center', justifyContent:'center', cursor: 'grab', mr: 1 }}>
         <DragHandleIcon />
       </Box>
 

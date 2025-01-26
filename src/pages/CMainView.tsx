@@ -56,7 +56,7 @@ export default function CMainView() {
                 </Typography>
               </ThemeProvider>
               <Button variant='outlined' color='error' onClick={handleEndClick}>Meeting beenden</Button>
-              <Button variant='outlined' color='error' onClick={handleBackClick}>Züruck</Button>
+              <Button variant='outlined' color='error' onClick={handleBackClick}>Zurück</Button>
             </Toolbar>
           </AppBar>
         </Grid>
