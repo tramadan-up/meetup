@@ -79,7 +79,7 @@ export default function ParticipantList({ participants, isSlideView=false }: Par
 
                 return {
                     ...participant,
-                    punishmentTokens: newPunishmentTokens > 0 ? newPunishmentTokens : 0,
+                    punishmentTokens: newPunishmentTokens,
                     score: newScore,
                 };
             }
@@ -131,7 +131,6 @@ export default function ParticipantList({ participants, isSlideView=false }: Par
                                             color="error"
                                             size="small"
                                             onClick={() => handleTokenChange(participant.id, 'increase')}
-                                            disabled={participant.score <= 0}
                                             sx={{ padding: 0 }}
                                         >
                                             <AddIcon />
@@ -140,7 +139,6 @@ export default function ParticipantList({ participants, isSlideView=false }: Par
                                             color="success"
                                             size="small"
                                             onClick={() => handleTokenChange(participant.id, 'decrease')}
-                                            disabled={participant.punishmentTokens <= 0}
                                             sx={{ padding: 0 }}
                                         >
                                             <RemoveIcon />

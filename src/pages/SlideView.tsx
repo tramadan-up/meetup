@@ -4,7 +4,9 @@ import Box from '@mui/material/Box'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import PdfViewerEx from '../components/PdfViewerEx';
-import Token from '../components/Token';
+import TimeToken from '../components/TimeToken';
+import SpeakingToken from '../components/SpekingToken';
+import PunishmentToken from '../components/PunishmentToken';
 import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip';
 import { ChevronLeft } from '@mui/icons-material';
@@ -47,9 +49,9 @@ export default function SlideView() {
               width:'100%',
               paddingTop:'1vh'
           }}>
-            <Token type="speaking" size="small" />
-            <Token type="time" size="small" />
-            <Token type="punishment" size="small" />
+            <TimeToken size="small" />
+            <SpeakingToken size="small" />
+            <PunishmentToken size="small" />
             <Tooltip title="Zurück zur Hauptansicht">
               <IconButton onClick={handleBackClick} aria-label="Zurück zur Hauptansicht">
                 <ChevronLeft sx={{ fontSize: '70px' }} />

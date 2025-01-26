@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid2'
@@ -7,13 +8,18 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import PdfViewer from '../components/PdfViewer';
 import Notes from '../components/Notes';
-import Token from '../components/Token';
 import TimerComponent from '../components/TimerComponent';
+import TimeToken from '../components/TimeToken';
+import SpeakingToken from '../components/SpekingToken';
+import PunishmentToken from '../components/PunishmentToken';
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
 
+const TIME_TOKEN_STORAGE_KEY = 'timeTokenCount';
+const SPEAKING_TOKEN_STORAGE_KEY = 'speakingTokenCount';
+const PUNISHMENT_TOKEN_STORAGE_KEY = 'punishmentTokenCount';
 
 export default function MainView() {
   const date = new Date();
@@ -24,6 +30,52 @@ export default function MainView() {
   const handleBackClick = () => {
     navigate('/');
   };
+
+  const defaultCount =  4;
+  const defaultPunishmentCount = 0;
+  const [timeTokenCount, setTimeTokenCount] = useState<number>(() => {
+    const storedTimeTokenCount = sessionStorage.getItem(TIME_TOKEN_STORAGE_KEY);
+    return storedTimeTokenCount !== null ? parseInt(storedTimeTokenCount, 10) : defaultCount;
+  });
+  const [speakingTokenCount, setSpeakingTokenCount] = useState<number>(() => {
+    const storedSpeakingTokenCount = sessionStorage.getItem(SPEAKING_TOKEN_STORAGE_KEY);
+    return storedSpeakingTokenCount !== null ? parseInt(storedSpeakingTokenCount, 10) : defaultCount;
+  });
+  const [punishmentTokenCount, setPunishmentTokenCount] = useState<number>(() => {
+    const storedPunishmentTokenCount = sessionStorage.getItem(PUNISHMENT_TOKEN_STORAGE_KEY);
+    return storedPunishmentTokenCount !== null ? parseInt(storedPunishmentTokenCount, 10) : defaultPunishmentCount;
+  });
+
+  useEffect(() => {
+    const syncTimeTokenCount = () => {
+        const storedTimeTokenCount = sessionStorage.getItem(TIME_TOKEN_STORAGE_KEY);
+        if (storedTimeTokenCount !== null) {
+            setTimeTokenCount(parseInt(storedTimeTokenCount, 10));
+        }
+    };
+    const syncSpeakingTokenCount = () => {
+      const storedSpeakingTokenCount = sessionStorage.getItem(SPEAKING_TOKEN_STORAGE_KEY);
+      if (storedSpeakingTokenCount !== null) {
+          setSpeakingTokenCount(parseInt(storedSpeakingTokenCount, 10));
+      }
+    };
+    const syncPunishmentTokenCount = () => {
+      const storedPunishmentTokenCount = sessionStorage.getItem(PUNISHMENT_TOKEN_STORAGE_KEY);
+      if (storedPunishmentTokenCount !== null) {
+          setPunishmentTokenCount(parseInt(storedPunishmentTokenCount, 10));
+      }
+    };
+
+    window.addEventListener('timeToken:update', syncTimeTokenCount);
+    window.addEventListener('speakingToken:update', syncSpeakingTokenCount);
+    window.addEventListener('punishmentToken:update', syncPunishmentTokenCount);
+    return () => {
+        window.removeEventListener('timeToken:update', syncTimeTokenCount);
+        window.removeEventListener('speakingToken:update', syncSpeakingTokenCount);
+        window.removeEventListener('punishmentToken:update', syncPunishmentTokenCount);
+    };
+  }, []);
+
 
   return (
     <Box sx={{
@@ -64,9 +116,9 @@ export default function MainView() {
               paddingBottom: '1vh'
               }}>
               <ThemeProvider theme={theme}>
-                <Typography variant="h4">Zeittoken</Typography>
+                <Typography variant="h4">Zeittoken: {timeTokenCount}</Typography>
               </ThemeProvider>
-              <Token type="time" size="big" />
+              <TimeToken size="big" />
             </Grid>
             <Grid sx={{
               border: '1px solid grey', 
@@ -82,9 +134,9 @@ export default function MainView() {
               paddingBottom: '1vh'
               }}>
               <ThemeProvider theme={theme}>
-                <Typography variant="h4">Redetoken</Typography>
+                <Typography variant="h4">Redetoken: {speakingTokenCount}</Typography>
               </ThemeProvider>
-              <Token type="speaking" size="big" />
+              <SpeakingToken size="big" />
             </Grid>
             <Grid sx={{
               border: '1px solid grey', 
@@ -100,9 +152,9 @@ export default function MainView() {
               paddingBottom: '1vh'
               }}>
               <ThemeProvider theme={theme}>
-                <Typography variant="h4">Straftoken</Typography>
+                <Typography variant="h4">Straftoken: {punishmentTokenCount}</Typography>
               </ThemeProvider>
-              <Token type="punishment" size="big" />
+              <PunishmentToken size="big" />
             </Grid>
           </Grid>
 

@@ -71,7 +71,7 @@ export default function Token({ type, size }: TokenProps) {
                         <Tooltip key={index} title={`${type.charAt(0).toUpperCase() + type.slice(1)} Token`}>
                             <IconButton
                                 color={type === 'punishment' ? 'error' : 'primary'}
-                                sx={{ opacity: tokenCount > index ? 1 : 0.5 }}
+                                sx={{ opacity: tokenCount > index ? 1 : 0.2 }}
                                 onClick={() => {
                                     if (type !== 'punishment') {
                                         setTokenCount((prevCount) => (prevCount > index ? prevCount - 1 : prevCount));

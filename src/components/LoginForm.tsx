@@ -18,7 +18,7 @@ export default function LoginForm() {
     const [userType, setUserType] = useState(() => {
             const storedUserType = sessionStorage.getItem(USER_TYPE_KEY);
             return storedUserType ? JSON.parse(storedUserType) : true;
-        });
+    });
     useEffect(() => {
         const syncUserType = () => {
             const storedUserType = sessionStorage.getItem(USER_TYPE_KEY);
