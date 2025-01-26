@@ -33,7 +33,7 @@ const SHOW_VALUES_KEY = 'showValues';
 
 export default function CreationForm() {
     const [name, setName] = useState('');
-    const [meetingName, setMeetingName] = useState('Team meeting');
+    const [meetingName, setMeetingName] = useState('Team Meeting');
     const [entries, setEntries] = useState<Entry[]>([]);
     const [speakingTokens, setSpeakingTokens] = useState<number>(
         parseInt(sessionStorage.getItem(SPEAKING_TOKENS_KEY) || '3', 10)

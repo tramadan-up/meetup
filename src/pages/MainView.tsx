@@ -95,7 +95,7 @@ export default function MainView() {
             <Toolbar>
               <ThemeProvider theme={theme}>
                 <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                  Pausenreform - {formattedDate}
+                  Team Meeting - {formattedDate}
                 </Typography>
               </ThemeProvider>
               

@@ -54,7 +54,7 @@ export default function ReviewView() {
         <AppBar position="static" sx={{ bgcolor: 'white', borderRadius: '8px', textAlign: 'center', color: 'black' }}>
             <Toolbar>
               <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                Pausenreform - {formattedDate}
+                Team Meeting - {formattedDate}
               </Typography>
               <Tooltip title="Notizen herunterladen">
                 <IconButton
