@@ -191,7 +191,6 @@ export default function CreationForm() {
     };
 
     return (
-
         <Box sx={{
             border: '1px solid grey',
             borderRadius: '8px',
