@@ -73,40 +73,6 @@ export default function Highscore() {
           ))}
         </Grid>
       </Grid>
-
     </Box>
-    /** 
-    <Box sx={{ padding: 2 }}>
-      <Typography variant="h4" gutterBottom>
-        Highscores
-      </Typography>
-      <Box
-        sx={{
-          height: '50%',
-          overflow: 'auto',
-          border: '1px solid',
-          borderColor: 'divider',
-          borderRadius: 2,
-          padding: 1,
-        }}
-      >
-        {participants.map((participant) => (
-          <Box
-            key={participant.id}
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              padding: 2,
-            }}
-          >
-            <Typography variant="h6">{participant.name}</Typography>
-            <Typography variant="h6">{participant.score} Punkte</Typography>
-            <Divider />
-          </Box>
-        ))}
-      </Box>
-    </Box>
-    */
   );
 }

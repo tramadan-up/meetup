@@ -67,33 +67,5 @@ export default function Notes({ isParticipant = false }: NotesProps) {
                 </IconButton>
             </Tooltip>
         </Box>
-        /** 
-        <Box sx={{ position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: 1, height: '100%', width: '100%' }}>
-            <TextField
-                label="Notizen"
-                multiline
-                rows={isParticipant ? 14 : 10}
-                variant="outlined"
-                fullWidth
-                value={note}
-                onChange={(e) => setNote(e.target.value)}
-                sx={{ height: '100%' }}
-            />
-            <Tooltip title="Download Notes">
-                <IconButton
-                    color="primary"
-                    onClick={handleDownload}
-                    aria-label="Download Notes"
-                    sx={{
-                        position: 'absolute',
-                        bottom: 15,
-                        right: 8,
-                    }}
-                >
-                    <DownloadIcon />
-                </IconButton>
-            </Tooltip>
-        </Box>
-        */
     );
 }

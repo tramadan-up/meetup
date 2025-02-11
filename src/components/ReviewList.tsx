@@ -158,58 +158,5 @@ export default function ReviewList() {
         </Grid>
       </Grid>
     </Box>
-
-
-    /** 
-    <Box sx={{ padding: 2 }}>
-      <Typography variant="h4" gutterBottom>
-        Teilnehmerbewertungen {[...Array(5)].map((_, index) => (
-                  <StarIcon
-                    key={index}
-                    color={index < averageScore ? 'primary' : 'disabled'}
-                  />
-                ))}
-      </Typography>
-      <Box
-        sx={{
-          height: '75%',
-          overflow: 'auto',
-          border: '1px solid',
-          borderColor: 'divider',
-          borderRadius: 2,
-          padding: 1,
-        }}
-      >
-        {reviews.map((review) => {
-          const participant = participants.find((p) => p.id === review.participantId);
-          return (
-            <Box
-              key={review.participantId}
-              sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                padding: 2,
-                borderBottom: '1px solid',
-                borderColor: 'divider',
-                ':last-child': { borderBottom: 'none' },
-              }}
-            >
-              <Typography variant="h6" sx={{ flex: 1 }}>
-                {participant?.name || 'Unbekannter Teilnehmer'}
-              </Typography>
-
-              <Typography
-                variant="body2"
-                sx={{ flex: 3, textAlign: 'center', marginX: 2 }}
-              >
-                {review.comment}
-              </Typography>
-            </Box>
-          );
-        })}
-      </Box>
-    </Box>
-    */
   );
 }
