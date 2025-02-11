@@ -26,6 +26,7 @@ export default function SpeakingToken({ size }: SpeakingTokenProps) {
     const handleTokenClick = () => {
         if (size === 'small' && speakingTokenCount > 0) {
             setSpeakingTokenCount((prevCount) => prevCount - 1);
+            alert("Du hast ein Redetoken benutzt und dem/der Koordinator/in den Wunsch eines mündlichen Beitrages signalisiert. [Diese Funktion ist nicht vollständig implementiert.]");
         }
     };
 
@@ -50,6 +51,7 @@ export default function SpeakingToken({ size }: SpeakingTokenProps) {
                             sx={{ opacity: speakingTokenCount > index ? 1 : 0.2 }}
                             onClick={() => {
                                 setSpeakingTokenCount((prevCount) => (prevCount > index ? prevCount - 1 : prevCount));
+                                alert("Du hast ein Redetoken benutzt und dem/der Koordinator/in den Wunsch eines mündlichen Beitrages signalisiert. [Diese Funktion ist nicht vollständig implementiert.]");
                             }}
                         >
                             <ChatIcon sx={{ fontSize: '90px' }} />

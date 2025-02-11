@@ -26,6 +26,7 @@ export default function TimeToken({ size }: TimeTokenProps) {
     const handleTokenClick = () => {
         if (size === 'small' && timeTokenCount > 0) {
             setTimeTokenCount((prevCount) => prevCount - 1);
+            alert("Du hast ein Zeittoken benutzt und den Timer um eine Minute verlänger. [Diese Funktion ist nicht vollständig implementiert.]");
         }
     };
 
@@ -50,6 +51,7 @@ export default function TimeToken({ size }: TimeTokenProps) {
                             sx={{ opacity: timeTokenCount > index ? 1 : 0.2 }}
                             onClick={() => {
                                 setTimeTokenCount((prevCount) => (prevCount > index ? prevCount - 1 : prevCount));
+                                alert("Du hast ein Zeittoken benutzt und den Timer um eine Minute verlänger. [Diese Funktion ist nicht vollständig implementiert.]");
                             }}
                         >
                             <TimerIcon sx={{ fontSize: '90px' }} />
